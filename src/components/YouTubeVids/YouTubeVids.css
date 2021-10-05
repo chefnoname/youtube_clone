@@ -1,0 +1,7 @@
+.cardSpacing {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  width: 100vw;
+  /* background-color: teal; */
+}

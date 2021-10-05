@@ -1,0 +1,38 @@
+.youtubeCard {
+  width: 300px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  background-color: #181818;
+}
+
+.thumbnail img {
+  width: 300px;
+  height: 150px;
+  /* background-color: goldenrod; */
+}
+
+.videoDetails {
+  display: flex;
+}
+
+.channelPic img {
+  border-radius: 50%;
+  /* background-color: goldenrod; */
+  margin-right: 30px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.videoTitle {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.viewCount {
+  display: flex;
+  margin-top: 10px;
+}
+
+.timePosted {
+  margin-left: 10px;
+}
