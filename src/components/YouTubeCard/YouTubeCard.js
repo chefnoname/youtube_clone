@@ -2,8 +2,6 @@ import Typography from "@mui/material/Typography";
 
 import "./YouTubeCard.css";
 const YouTubeCard = ({ image, vidName, channelName }) => {
-  console.log(vidName.includes("&#39;t"));
-
   const uploadTime = Math.ceil(Math.random() * 10);
 
   const TIME_ARR = ["hours", "days", "months", "years"];

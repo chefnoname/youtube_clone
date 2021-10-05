@@ -4,6 +4,7 @@ import YouTubeVids from "./components/YouTubeVids/YouTubeVids";
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
@@ -14,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const getYoutubeVidObject = async () => {
       const res = await fetch(
-        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=500&order=date`,
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
         {
           method: "GET",
           headers: {
@@ -46,7 +47,8 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        <YouTubeVids youtubeObj={youtubeObj} />
+        {!searchResults && <YouTubeVids youtubeObj={youtubeObj} />}
+        {searchResults && <SearchPage youtubeObj={youtubeObj} />}
       </div>
     </>
   );

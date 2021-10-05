@@ -82,9 +82,13 @@ const PrimarySearchAppBar = (props) => {
   };
 
   const handleChange = (e) => {
-    setTimeout(() => {
-      props.changeQueryString(e.target.value);
-    }, 3000);
+    e.keyCode === 13
+      ? props.changeQueryString(e.target.value)
+      : console.log(e.target.value);
+  };
+
+  const clearQueryString = (e) => {
+    props.changeQueryString(null);
   };
 
   const menuId = "primary-search-account-menu";
@@ -162,7 +166,7 @@ const PrimarySearchAppBar = (props) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mb: "50px" }}>
       <AppBar position="static" sx={{ backgroundColor: "#202020" }}>
         <Toolbar>
           <IconButton
@@ -174,12 +178,16 @@ const PrimarySearchAppBar = (props) => {
           >
             <MenuIcon sx={{ color: "white" }} />
           </IconButton>
-          <YouTubeIcon sx={{ color: "red", fontSize: "30px", mr: 1 }} />
+          <YouTubeIcon
+            sx={{ color: "red", fontSize: "30px", mr: 1 }}
+            onClick={clearQueryString}
+          />
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
+            onClick={clearQueryString}
           >
             YouTube
           </Typography>
@@ -193,7 +201,7 @@ const PrimarySearchAppBar = (props) => {
               sx={{ width: "700px" }}
               autoFocus
               fullWidth={true}
-              onChange={handleChange}
+              onKeyDown={handleChange}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

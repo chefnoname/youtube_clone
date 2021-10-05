@@ -8,7 +8,6 @@
 .thumbnail img {
   width: 300px;
   height: 150px;
-  /* background-color: goldenrod; */
 }
 
 .videoDetails {
@@ -17,7 +16,6 @@
 
 .channelPic img {
   border-radius: 50%;
-  /* background-color: goldenrod; */
   margin-right: 30px;
   height: 40px;
   margin-top: 40px;
