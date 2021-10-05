@@ -5,6 +5,10 @@
   padding-left: 50px;
 }
 
+.searchPageCard:hover {
+  cursor: pointer;
+}
+
 .searchPageThumbnail img {
   margin-right: 50px;
   width: 420px;

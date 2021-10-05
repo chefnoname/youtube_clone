@@ -1,0 +1,7 @@
+.goHome {
+  display: flex;
+}
+
+.goHome:hover {
+  cursor: pointer;
+}

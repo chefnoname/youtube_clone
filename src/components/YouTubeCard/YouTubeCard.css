@@ -5,6 +5,10 @@
   background-color: #181818;
 }
 
+.youtubeCard:hover {
+  cursor: pointer;
+}
+
 .thumbnail img {
   width: 300px;
   height: 150px;

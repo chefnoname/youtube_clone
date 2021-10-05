@@ -2,7 +2,13 @@ import Typography from "@mui/material/Typography";
 
 import "./SearchPageCard.css";
 
-const SearchPageCard = ({ image, vidName, channelName }) => {
+const SearchPageCard = ({
+  image,
+  vidName,
+  channelName,
+  videoId,
+  getTheVidId,
+}) => {
   const uploadTime = Math.ceil(Math.random() * 10);
 
   const TIME_ARR = ["hours", "days", "months", "years"];
@@ -10,8 +16,14 @@ const SearchPageCard = ({ image, vidName, channelName }) => {
 
   const views = Math.ceil(Math.random() * 20);
 
+  const getVideoId = () => {
+    getTheVidId(videoId);
+  };
+
+  // console.log("the current clicked videoId is ", clickedVideo);
+
   return (
-    <div className="searchPageCard">
+    <div className="searchPageCard" onClick={getVideoId}>
       <div className="searchPageThumbnail">
         <img srcSet={image} alt="" />
       </div>
@@ -20,7 +32,7 @@ const SearchPageCard = ({ image, vidName, channelName }) => {
         <div className="searchPageChannelInfo">
           <Typography variant="h6" sx={{ mt: "10px" }}>
             {vidName.split(" ").length > 10
-              ? vidName.split(" ").slice(0, 8).join(" ") + "..."
+              ? vidName.split(" ").slice(0, 7).join(" ") + "..."
               : vidName}
           </Typography>
           <Typography variant="subtitle2" sx={{ color: "#848584" }}>

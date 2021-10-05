@@ -9,6 +9,7 @@ import SearchPage from "./components/SearchPage/SearchPage";
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
+  const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
 
   let queryStr = searchResults ? searchResults : "frontend engineer 2021";
 
@@ -38,6 +39,15 @@ const App = () => {
     setSearchResults(e);
   };
 
+  const getTheSearchedVidId = (e) => {
+    setSearchPageClickedVidId(e);
+  };
+
+  console.log(
+    "this is the searchPage Clicked VidId rendered in App JS",
+    searchPageClickedVidId
+  );
+
   return (
     <>
       <PrimarySearchAppBar
@@ -48,7 +58,14 @@ const App = () => {
       <div className="formatting">
         <SideBar />
         {!searchResults && <YouTubeVids youtubeObj={youtubeObj} />}
-        {searchResults && <SearchPage youtubeObj={youtubeObj} />}
+        {searchResults && (
+          <SearchPage
+            youtubeObj={youtubeObj}
+            getTheSearchedVidId={(e) => {
+              getTheSearchedVidId(e);
+            }}
+          />
+        )}
       </div>
     </>
   );

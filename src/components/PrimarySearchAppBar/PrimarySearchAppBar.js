@@ -17,6 +17,8 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useState } from "react";
 
+import "./PrimarySearchAppBar.css";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -57,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const PrimarySearchAppBar = (props) => {
+const PrimarySearchAppBar = ({ changeQueryString }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -82,13 +84,13 @@ const PrimarySearchAppBar = (props) => {
   };
 
   const handleChange = (e) => {
-    e.keyCode === 13
-      ? props.changeQueryString(e.target.value)
-      : console.log(e.target.value);
+    if (e.keyCode === 13) {
+      changeQueryString(e.target.value);
+    }
   };
 
   const clearQueryString = (e) => {
-    props.changeQueryString(null);
+    changeQueryString(null);
   };
 
   const menuId = "primary-search-account-menu";
@@ -178,19 +180,21 @@ const PrimarySearchAppBar = (props) => {
           >
             <MenuIcon sx={{ color: "white" }} />
           </IconButton>
-          <YouTubeIcon
-            sx={{ color: "red", fontSize: "30px", mr: 1 }}
-            onClick={clearQueryString}
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
-            onClick={clearQueryString}
-          >
-            YouTube
-          </Typography>
+          <div className="goHome">
+            <YouTubeIcon
+              sx={{ color: "red", fontSize: "30px", mr: 1 }}
+              onClick={clearQueryString}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
+              onClick={clearQueryString}
+            >
+              YouTube
+            </Typography>
+          </div>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
