@@ -81,8 +81,10 @@ const PrimarySearchAppBar = (props) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const inputChangeHandler = (e) => {
-    return e.target.value;
+  const handleChange = (e) => {
+    setTimeout(() => {
+      props.changeQueryString(e.target.value);
+    }, 3000);
   };
 
   const menuId = "primary-search-account-menu";
@@ -191,7 +193,7 @@ const PrimarySearchAppBar = (props) => {
               sx={{ width: "700px" }}
               autoFocus
               fullWidth={true}
-              onChange={inputChangeHandler}
+              onChange={handleChange}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

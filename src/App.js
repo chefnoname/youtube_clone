@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     const getYoutubeVidObject = async () => {
       const res = await fetch(
-        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=UK&maxResults=50&order=date`,
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
         {
           method: "GET",
           headers: {
@@ -33,11 +33,21 @@ const App = () => {
     };
 
     getYoutubeVidObject();
-  }, []);
+  }, [queryStr]);
+
+  const changeQueryString = (e) => {
+    setSearchResults(e);
+  };
+
+  console.log("this is the search results ", searchResults);
 
   return (
     <>
-      <PrimarySearchAppBar />
+      <PrimarySearchAppBar
+        changeQueryString={(e) => {
+          changeQueryString(e);
+        }}
+      />
       <div className="formatting">
         <SideBar />
         <YouTubeVids youtubeObj={youtubeObj} />
