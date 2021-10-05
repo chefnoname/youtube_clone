@@ -9,7 +9,7 @@ const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
 
-  let queryStr = searchResults ? searchResults : "working for a FAANG company";
+  let queryStr = searchResults ? searchResults : "frontend engineer 2021";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -36,8 +36,6 @@ const App = () => {
   const changeQueryString = (e) => {
     setSearchResults(e);
   };
-
-  console.log("this is the search results ", searchResults);
 
   return (
     <>
