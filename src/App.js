@@ -9,14 +9,12 @@ const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
 
-  let queryStr = searchResults
-    ? searchResults
-    : "champions league highlights 2020";
+  let queryStr = searchResults ? searchResults : "working for a FAANG company";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
       const res = await fetch(
-        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=500&order=date`,
         {
           method: "GET",
           headers: {

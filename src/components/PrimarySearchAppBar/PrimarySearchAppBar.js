@@ -163,33 +163,33 @@ const PrimarySearchAppBar = (props) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#181818" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#202020" }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            sx={{ mr: 1 }}
           >
             <MenuIcon sx={{ color: "white" }} />
           </IconButton>
+          <YouTubeIcon sx={{ color: "red", fontSize: "30px", mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
           >
-            <YouTubeIcon />
             YouTube
           </Typography>
-          <Search sx={{ marginRight: "70px" }}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
-              inputProps={{ "aria-label": "search", width: "700px" }}
+              inputProps={{ "aria-label": "search" }}
               sx={{ width: "700px" }}
               autoFocus
               fullWidth={true}
