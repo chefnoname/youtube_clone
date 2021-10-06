@@ -1,16 +1,22 @@
 import YouTubeCard from "../YouTubeCard/YouTubeCard";
+import { useState } from "react";
+
 import "./YouTubeVids.css";
 
-const YouTubeVids = ({ youtubeObj }) => {
-  // let x = youtubeObj[0].snippet.publishedAt;
-  // let y = x.toISOString();
-  // console.log(y);
+const YouTubeVids = ({ youtubeObj, getTheHomepageVidId }) => {
+  const [clickedVideoId, setClickedVideoId] = useState("");
 
-  // const { id } = youtubeObj[1];
-  // const { videoId } = id;
+  const getTheVidId = (e) => {
+    setClickedVideoId(e);
+  };
 
-  // const videoSrc = `https://youtube.com/embed/${x}`;
-  // console.log(videoId);
+  // console.log(clickedVideoId, "is rendered in YouTubeVids");
+
+  const getTheClickedVidId = () => {
+    getTheHomepageVidId(clickedVideoId);
+  };
+
+  getTheClickedVidId();
 
   return (
     <div className="cardSpacing">
@@ -20,9 +26,12 @@ const YouTubeVids = ({ youtubeObj }) => {
           image={youtubeVid.snippet.thumbnails.high.url}
           vidName={youtubeVid.snippet.title}
           channelName={youtubeVid.snippet.channelTitle}
+          videoId={youtubeVid.id.videoId}
+          getTheVidId={(e) => {
+            getTheVidId(e);
+          }}
         />
       ))}
-      {/* <iframe src={videoSrc} frameborder="0" height="100%" width="100%" /> */}
     </div>
   );
 };

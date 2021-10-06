@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 
 import "./YouTubeCard.css";
-const YouTubeCard = ({ image, vidName, channelName }) => {
+const YouTubeCard = ({ image, vidName, channelName, videoId, getTheVidId }) => {
   const uploadTime = Math.ceil(Math.random() * 10);
 
   const TIME_ARR = ["hours", "days", "months", "years"];
@@ -9,8 +9,14 @@ const YouTubeCard = ({ image, vidName, channelName }) => {
 
   const views = Math.ceil(Math.random() * 20);
 
+  const getVideoId = () => {
+    getTheVidId(videoId);
+
+    // console.log(videoId);
+  };
+
   return (
-    <div className="youtubeCard">
+    <div className="youtubeCard" onClick={getVideoId}>
       <div className="thumbnail">
         <img srcSet={image} alt="" />
       </div>

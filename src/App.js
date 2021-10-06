@@ -10,8 +10,9 @@ const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
+  const [homePageClickedVidId, setHomePageClickedVidId] = useState("");
 
-  let queryStr = searchResults ? searchResults : "frontend engineer 2021";
+  let queryStr = searchResults ? searchResults : "react 2021 traversy media";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -43,10 +44,9 @@ const App = () => {
     setSearchPageClickedVidId(e);
   };
 
-  console.log(
-    "this is the searchPage Clicked VidId rendered in App JS",
-    searchPageClickedVidId
-  );
+  const getTheHomepageVidId = (e) => {
+    setHomePageClickedVidId(e);
+  };
 
   return (
     <>
@@ -57,7 +57,14 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && <YouTubeVids youtubeObj={youtubeObj} />}
+        {!searchResults && (
+          <YouTubeVids
+            youtubeObj={youtubeObj}
+            getTheHomepageVidId={(e) => {
+              getTheHomepageVidId(e);
+            }}
+          />
+        )}
         {searchResults && (
           <SearchPage
             youtubeObj={youtubeObj}
