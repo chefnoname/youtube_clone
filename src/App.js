@@ -11,7 +11,7 @@ const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
-  const [homePageClickedVidId, setHomePageClickedVidId] = useState("");
+  const [homePageClickedVid, setHomePageClickedVid] = useState("");
 
   let queryStr = searchResults ? searchResults : "how to get a tech job 2021";
 
@@ -45,8 +45,8 @@ const App = () => {
     setSearchPageClickedVidId(e);
   };
 
-  const getTheHomepageVidId = (e) => {
-    setHomePageClickedVidId(e);
+  const getTheHomepageVid = (e) => {
+    setHomePageClickedVid(e);
   };
 
   return (
@@ -58,11 +58,11 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && !homePageClickedVidId && (
+        {!searchResults && !homePageClickedVid && (
           <YouTubeVids
             youtubeObj={youtubeObj}
-            getTheHomepageVidId={(e) => {
-              getTheHomepageVidId(e);
+            getTheHomepageVid={(e) => {
+              getTheHomepageVid(e);
             }}
           />
         )}
@@ -74,7 +74,7 @@ const App = () => {
             }}
           />
         )}
-        {homePageClickedVidId && <VideoPage videoId={homePageClickedVidId} />}
+        {homePageClickedVid && <VideoPage props={homePageClickedVid} />}
       </div>
     </>
   );

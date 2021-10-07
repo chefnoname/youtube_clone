@@ -1,15 +1,27 @@
+import VideoCard from "./VideoCard";
+import VideoTiles from "./VideoTiles";
+
 import "./VideoPage.css";
 
-const VideoPage = ({ videoId }) => {
+const VideoPage = (props) => {
+  const { channelName, image, vidName, videoId } = props.props;
   const youtubeURL = `https://youtube.com/embed/${videoId}?autoplay=1`;
+
+  // console.log(props.props.videoId, "this is rendered in VideoPage");
+  // console.log(props);
 
   return (
     <div className="container">
       <div className="mainVideo">
-        <iframe src={youtubeURL} frameborder="0" width="650px" height="400px" />
+        <VideoCard
+          url={youtubeURL}
+          channelName={channelName}
+          image={image}
+          vidName={vidName}
+        />
       </div>
       <div className="sideVideos">
-        <h1>this is where 5 videos will be rendered</h1>
+        <VideoTiles />
       </div>
     </div>
   );

@@ -3,20 +3,20 @@ import { useState } from "react";
 
 import "./YouTubeVids.css";
 
-const YouTubeVids = ({ youtubeObj, getTheHomepageVidId }) => {
-  const [clickedVideoId, setClickedVideoId] = useState("");
+const YouTubeVids = ({ youtubeObj, getTheHomepageVid }) => {
+  const [clickedVideo, setClickedVideo] = useState("");
 
-  const getTheVidId = (e) => {
-    setClickedVideoId(e);
+  const getTheVid = (e) => {
+    setClickedVideo(e);
   };
 
-  // console.log(clickedVideoId, "is rendered in YouTubeVids");
+  // console.log(clickedVideo, "is rendered in YouTubeVids");
 
-  const getTheClickedVidId = () => {
-    getTheHomepageVidId(clickedVideoId);
+  const getTheClickedVid = () => {
+    getTheHomepageVid(clickedVideo);
   };
 
-  getTheClickedVidId();
+  getTheClickedVid();
 
   return (
     <div className="cardSpacing">
@@ -27,8 +27,8 @@ const YouTubeVids = ({ youtubeObj, getTheHomepageVidId }) => {
           vidName={youtubeVid.snippet.title}
           channelName={youtubeVid.snippet.channelTitle}
           videoId={youtubeVid.id.videoId}
-          getTheVidId={(e) => {
-            getTheVidId(e);
+          getTheVid={(e) => {
+            getTheVid(e);
           }}
         />
       ))}

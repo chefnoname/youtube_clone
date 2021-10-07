@@ -3,5 +3,9 @@
   width: 90vw;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
+}
+
+.sideVideos {
+  margin-left: 40px;
 }
