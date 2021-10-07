@@ -2,14 +2,22 @@ import Typography from "@mui/material/Typography";
 
 import "./VideoTiles.css";
 
-const VideoTiles = ({ suggestedVids }) => {
+const VideoTiles = ({ youtubeObj }) => {
+  // console.log(youtubeObj);
+
+  const tenResults = youtubeObj.slice(0, 10);
+
+  const didItClick = () => {
+    console.log(tenResults[1].id.videoId, "clicked in videoPage component");
+  };
+
   return (
-    <div>
-      {suggestedVids.map((vid, i) => (
+    <div onClick={didItClick}>
+      {tenResults.map((vid, i) => (
         <div className="sideContainer" key={i}>
           <div className="sideImage">
             <img src={vid.snippet.thumbnails.medium.url} alt="" />
-            {console.log(vid.snippet.thumbnails)}
+            {/* {console.log(vid.snippet.thumbnails)} */}
           </div>
           <div className="videoInfo">
             <Typography variant="subtitle2" sx={{ fontWeight: "bolder" }}>
