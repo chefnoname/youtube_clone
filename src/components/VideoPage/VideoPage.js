@@ -4,10 +4,11 @@ import VideoTiles from "./VideoTiles";
 import "./VideoPage.css";
 
 const VideoPage = (props) => {
-  const { channelName, image, vidName, videoId } = props.props;
+  const { homePageClickedVid, suggestedVids } = props.props;
+  const { channelName, image, vidName, videoId } = homePageClickedVid;
+
   const youtubeURL = `https://youtube.com/embed/${videoId}?autoplay=1`;
-  // console.log(props);
-  // console.log(props.props.videoId, "this is rendered in VideoPage");
+
   // console.log(suggestedVids, "this is the suggestVids");
 
   return (
@@ -21,7 +22,7 @@ const VideoPage = (props) => {
         />
       </div>
       <div className="sideVideos">
-        <VideoTiles />
+        <VideoTiles suggestedVids={suggestedVids} />
       </div>
     </div>
   );

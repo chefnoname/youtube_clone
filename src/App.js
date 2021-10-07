@@ -1,19 +1,19 @@
 import PrimarySearchAppBar from "./components/PrimarySearchAppBar/PrimarySearchAppBar";
 import SideBar from "./components/SideBar/SideBar";
 import YouTubeVids from "./components/YouTubeVids/YouTubeVids";
+import SearchPage from "./components/SearchPage/SearchPage";
+import VideoPage from "./components/VideoPage/VideoPage";
 import { useState, useEffect } from "react";
 
 import "./App.css";
-import SearchPage from "./components/SearchPage/SearchPage";
-import VideoPage from "./components/VideoPage/VideoPage";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
-  const [homePageClickedVid, setHomePageClickedVid] = useState({});
+  const [homePageClickedVid, setHomePageClickedVid] = useState();
 
-  const queryStr = searchResults ? searchResults : "how to get a tech job 2021";
+  const queryStr = searchResults ? searchResults : "St Augustine 2005";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -37,6 +37,7 @@ const App = () => {
     getYoutubeVidObject();
   }, [queryStr]);
 
+  // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
     setSearchResults(e);
   };
@@ -45,12 +46,19 @@ const App = () => {
     setSearchPageClickedVidId(e);
   };
 
+  // FUNCTION TO COLLECT THE DATA NEEDED TO DISPLAY ON THE HOMEPAGE
   const getTheHomepageVid = (e) => {
-    const suggestedVids = youtubeObj.slice(0, 7);
     setHomePageClickedVid(e);
   };
+  const suggestedVids = youtubeObj.slice(0, 7);
 
-  console.log(homePageClickedVid);
+  // DATA RECEIVED WHEN YOU CLICK ON A VIDEO ON THE HOMEPAGE, ALSO A SLICED ARRAY OF PART OF THE HOMEPAGE SEARCH RESULTS
+  const videoDataFromHomepage = {
+    homePageClickedVid,
+    suggestedVids,
+  };
+
+  // console.log(suggestedVidDataStructure);
 
   return (
     <>
@@ -61,7 +69,7 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && homePageClickedVid !== {} && (
+        {!searchResults && !homePageClickedVid && (
           <YouTubeVids
             youtubeObj={youtubeObj}
             getTheHomepageVid={(e) => {
@@ -77,9 +85,9 @@ const App = () => {
             }}
           />
         )}
-        {/* {homePageClickedVid && !searchResults && (
-          <VideoPage props={homePageClickedVid} />
-        )} */}
+        {homePageClickedVid && !searchResults && (
+          <VideoPage props={videoDataFromHomepage} />
+        )}
       </div>
     </>
   );
