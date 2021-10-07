@@ -6,9 +6,9 @@ import "./VideoPage.css";
 const VideoPage = (props) => {
   const { channelName, image, vidName, videoId } = props.props;
   const youtubeURL = `https://youtube.com/embed/${videoId}?autoplay=1`;
-
-  // console.log(props.props.videoId, "this is rendered in VideoPage");
   // console.log(props);
+  // console.log(props.props.videoId, "this is rendered in VideoPage");
+  // console.log(suggestedVids, "this is the suggestVids");
 
   return (
     <div className="container">

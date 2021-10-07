@@ -11,9 +11,9 @@ const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
-  const [homePageClickedVid, setHomePageClickedVid] = useState("");
+  const [homePageClickedVid, setHomePageClickedVid] = useState({});
 
-  let queryStr = searchResults ? searchResults : "how to get a tech job 2021";
+  const queryStr = searchResults ? searchResults : "how to get a tech job 2021";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -46,8 +46,11 @@ const App = () => {
   };
 
   const getTheHomepageVid = (e) => {
+    const suggestedVids = youtubeObj.slice(0, 7);
     setHomePageClickedVid(e);
   };
+
+  console.log(homePageClickedVid);
 
   return (
     <>
@@ -58,7 +61,7 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && !homePageClickedVid && (
+        {!searchResults && homePageClickedVid !== {} && (
           <YouTubeVids
             youtubeObj={youtubeObj}
             getTheHomepageVid={(e) => {
@@ -74,9 +77,9 @@ const App = () => {
             }}
           />
         )}
-        {homePageClickedVid && !searchResults && (
+        {/* {homePageClickedVid && !searchResults && (
           <VideoPage props={homePageClickedVid} />
-        )}
+        )} */}
       </div>
     </>
   );

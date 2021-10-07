@@ -168,7 +168,7 @@ const PrimarySearchAppBar = ({ changeQueryString }) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, mb: "50px" }}>
+    <Box sx={{ flexGrow: 1, mb: "30px" }}>
       <AppBar position="static" sx={{ backgroundColor: "#202020" }}>
         <Toolbar>
           <IconButton
