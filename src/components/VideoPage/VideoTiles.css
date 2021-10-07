@@ -1,0 +1,22 @@
+.sideContainer {
+  display: flex;
+  /* justify-content: space-between; */
+  /* background-color: blueviolet; */
+  margin-left: 30px;
+  width: 33vw;
+}
+
+.sideContainer:hover {
+  cursor: pointer;
+}
+
+.sideImage img {
+  width: 150px;
+  height: 80px;
+  margin-right: 25px;
+}
+
+.videoInfo {
+  display: flex;
+  flex-direction: column;
+}

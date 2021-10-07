@@ -13,7 +13,7 @@ const App = () => {
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
 
-  const queryStr = searchResults ? searchResults : "St Augustine 2005";
+  const queryStr = searchResults ? searchResults : "traversey media";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -50,7 +50,7 @@ const App = () => {
   const getTheHomepageVid = (e) => {
     setHomePageClickedVid(e);
   };
-  const suggestedVids = youtubeObj.slice(0, 7);
+  const suggestedVids = youtubeObj.slice(0, 10);
 
   // DATA RECEIVED WHEN YOU CLICK ON A VIDEO ON THE HOMEPAGE, ALSO A SLICED ARRAY OF PART OF THE HOMEPAGE SEARCH RESULTS
   const videoDataFromHomepage = {
