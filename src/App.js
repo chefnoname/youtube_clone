@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 import "./App.css";
 import SearchPage from "./components/SearchPage/SearchPage";
+import VideoPage from "./components/VideoPage/VideoPage";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
@@ -12,7 +13,7 @@ const App = () => {
   const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
   const [homePageClickedVidId, setHomePageClickedVidId] = useState("");
 
-  let queryStr = searchResults ? searchResults : "react 2021 traversy media";
+  let queryStr = searchResults ? searchResults : "how to get a tech job 2021";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -57,7 +58,7 @@ const App = () => {
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && (
+        {!searchResults && !homePageClickedVidId && (
           <YouTubeVids
             youtubeObj={youtubeObj}
             getTheHomepageVidId={(e) => {
@@ -73,6 +74,7 @@ const App = () => {
             }}
           />
         )}
+        {homePageClickedVidId && <VideoPage videoId={homePageClickedVidId} />}
       </div>
     </>
   );

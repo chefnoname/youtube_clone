@@ -1,0 +1,7 @@
+.container {
+  /* background-color: blueviolet; */
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
