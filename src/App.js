@@ -74,7 +74,9 @@ const App = () => {
             }}
           />
         )}
-        {homePageClickedVid && <VideoPage props={homePageClickedVid} />}
+        {homePageClickedVid && !searchResults && (
+          <VideoPage props={homePageClickedVid} />
+        )}
       </div>
     </>
   );
