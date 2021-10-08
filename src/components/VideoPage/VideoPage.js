@@ -1,22 +1,30 @@
 import VideoCard from "./VideoCard";
 import VideoTiles from "./VideoTiles";
+import { useState } from "react";
 
 import "./VideoPage.css";
 
 const VideoPage = (props) => {
+  const [clickedSideVid, setClickedSideVid] = useState();
+
   const { homePageClickedVid, searchPageClickedVid, youtubeObj } = props.props;
   const { channelName, image, vidName, videoId } = homePageClickedVid
     ? homePageClickedVid
     : searchPageClickedVid;
 
-  const youtubeURL = `https://youtube.com/embed/${videoId}?autoplay=1`;
-
-  // console.log(suggestedVids, "this is the suggestVids");
-  // console.log(youtubeObj, "this is the youtube obj");
-  console.log(searchPageClickedVid);
-  const didItClick = () => {
-    console.log("clicked in videoPage component");
+  const handleClickedSideVid = (e) => {
+    setClickedSideVid(e);
   };
+
+  // setClickedSideVid("");
+  // const { videoId: clickedSideVideoId } = clickedSideVid.id;
+
+  // console.log(clickedSideVideoId, "this is the clickedsidevideoid");
+
+  const youtubeURL = `https://youtube.com/embed/${
+    clickedSideVid ? clickedSideVid.id.videoId : videoId
+  }?autoplay=1`;
+
   return (
     <div className="container">
       <div className="mainVideo">
@@ -28,7 +36,12 @@ const VideoPage = (props) => {
         />
       </div>
       <div className="sideVideos">
-        <VideoTiles youtubeObj={youtubeObj} onClick={didItClick} />
+        <VideoTiles
+          youtubeObj={youtubeObj}
+          handleClickedSideVid={(e) => {
+            handleClickedSideVid(e);
+          }}
+        />
       </div>
     </div>
   );

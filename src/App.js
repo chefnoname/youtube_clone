@@ -13,7 +13,9 @@ const App = () => {
   const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
 
-  const queryStr = searchResults ? searchResults : "vegan meal prep";
+  const queryStr = searchResults
+    ? searchResults
+    : "idris abkar surah mutaffifeen";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -61,7 +63,7 @@ const App = () => {
   };
 
   // console.log(searchPageClickedVid);
-  console.log(videoDataFromClickedVid);
+  // console.log(videoDataFromClickedVid);
   return (
     <>
       <PrimarySearchAppBar

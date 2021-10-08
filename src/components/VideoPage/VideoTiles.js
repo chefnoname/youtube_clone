@@ -1,21 +1,29 @@
 import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 import "./VideoTiles.css";
 
-const VideoTiles = ({ youtubeObj }) => {
-  // console.log(youtubeObj);
+const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
+  const [clickedSideVid, setClickedSideVid] = useState();
 
   const tenResults = youtubeObj.slice(0, 10);
 
-  const didItClick = (vid) => {
-    // console.log(vid, "clicked in videoTiles component");
+  const handleClickedVid = () => {
+    handleClickedSideVid(clickedSideVid);
   };
 
+  handleClickedVid();
+
   return (
-    <div onClick={didItClick}>
+    <div>
       {tenResults.map((vid, i) => (
         <div className="sideContainer" key={i}>
-          <div className="sideImage">
+          <div
+            className="sideImage"
+            onClick={() => {
+              setClickedSideVid(vid);
+            }}
+          >
             <img src={vid.snippet.thumbnails.medium.url} alt="" />
             {/* {console.log(vid.snippet.thumbnails)} */}
           </div>
