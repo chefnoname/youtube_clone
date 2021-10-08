@@ -4,14 +4,16 @@ import VideoTiles from "./VideoTiles";
 import "./VideoPage.css";
 
 const VideoPage = (props) => {
-  const { homePageClickedVid, youtubeObj } = props.props;
-  const { channelName, image, vidName, videoId } = homePageClickedVid;
+  const { homePageClickedVid, searchPageClickedVid, youtubeObj } = props.props;
+  const { channelName, image, vidName, videoId } = homePageClickedVid
+    ? homePageClickedVid
+    : searchPageClickedVid;
 
   const youtubeURL = `https://youtube.com/embed/${videoId}?autoplay=1`;
 
   // console.log(suggestedVids, "this is the suggestVids");
   // console.log(youtubeObj, "this is the youtube obj");
-
+  console.log(searchPageClickedVid);
   const didItClick = () => {
     console.log("clicked in videoPage component");
   };

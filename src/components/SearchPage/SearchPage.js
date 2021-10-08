@@ -3,18 +3,18 @@ import SearchPageCard from "./SearchPageCard";
 import "./SearchPage.css";
 import { useState } from "react";
 
-const SearchPage = ({ youtubeObj, getTheSearchedVidId }) => {
-  const [clickedVideoId, setClickedVideoId] = useState("");
+const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
+  const [clickedVideo, setClickedVideo] = useState("");
 
-  const getTheVidId = (e) => {
-    setClickedVideoId(e);
+  const getTheVid = (e) => {
+    setClickedVideo(e);
   };
 
-  const getTheClickedVidId = () => {
-    getTheSearchedVidId(clickedVideoId);
+  const getTheClickedVid = () => {
+    getTheSearchedVid(clickedVideo);
   };
 
-  getTheClickedVidId();
+  getTheClickedVid();
 
   return (
     <div className="searchTiles">
@@ -25,8 +25,8 @@ const SearchPage = ({ youtubeObj, getTheSearchedVidId }) => {
           vidName={youtubeVid.snippet.title}
           channelName={youtubeVid.snippet.channelTitle}
           videoId={youtubeVid.id.videoId}
-          getTheVidId={(e) => {
-            getTheVidId(e);
+          getTheVid={(e) => {
+            getTheVid(e);
           }}
         />
       ))}

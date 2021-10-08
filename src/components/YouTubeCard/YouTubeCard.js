@@ -13,6 +13,7 @@ const YouTubeCard = (props) => {
 
   const getClickedVid = () => {
     getTheVid(props);
+    console.log(props, "clicked in YouTubeCard");
   };
 
   return (

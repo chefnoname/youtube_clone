@@ -10,7 +10,7 @@ import "./App.css";
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
   const [searchResults, setSearchResults] = useState("");
-  const [searchPageClickedVidId, setSearchPageClickedVidId] = useState("");
+  const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
 
   const queryStr = searchResults ? searchResults : "vegan meal prep";
@@ -42,8 +42,9 @@ const App = () => {
     setSearchResults(e);
   };
 
-  const getTheSearchedVidId = (e) => {
-    setSearchPageClickedVidId(e);
+  // FUNCTION TO GET THE VIDEO OBJECT FROM A SEARCHED RESULT
+  const getTheSearchedVid = (e) => {
+    setSearchPageClickedVid(e);
   };
 
   // FUNCTION TO COLLECT THE DATA NEEDED TO DISPLAY ON THE HOMEPAGE
@@ -51,14 +52,16 @@ const App = () => {
     setHomePageClickedVid(e);
   };
 
-  // DATA RECEIVED WHEN YOU CLICK ON A VIDEO ON THE HOMEPAGE, ALSO A SLICED ARRAY OF PART OF THE HOMEPAGE SEARCH RESULTS
-  const videoDataFromHomepage = {
+  // DATA RECEIVED WHEN YOU CLICK ON A VIDEO FROM EITHER HOMEPAGE OR SEARCH,
+  // ALSO A SLICED ARRAY OF PART OF THE HOMEPAGE OR SEARCH RESULTS
+  const videoDataFromClickedVid = {
     homePageClickedVid,
     youtubeObj,
+    searchPageClickedVid,
   };
 
-  // console.log(suggestedVidDataStructure);
-
+  // console.log(searchPageClickedVid);
+  console.log(videoDataFromClickedVid);
   return (
     <>
       <PrimarySearchAppBar
@@ -79,13 +82,13 @@ const App = () => {
         {searchResults && (
           <SearchPage
             youtubeObj={youtubeObj}
-            getTheSearchedVidId={(e) => {
-              getTheSearchedVidId(e);
+            getTheSearchedVid={(e) => {
+              getTheSearchedVid(e);
             }}
           />
         )}
-        {homePageClickedVid && !searchResults && (
-          <VideoPage props={videoDataFromHomepage} />
+        {(homePageClickedVid || searchPageClickedVid) && !searchResults && (
+          <VideoPage props={videoDataFromClickedVid} />
         )}
       </div>
     </>

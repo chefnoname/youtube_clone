@@ -2,13 +2,8 @@ import Typography from "@mui/material/Typography";
 
 import "./SearchPageCard.css";
 
-const SearchPageCard = ({
-  image,
-  vidName,
-  channelName,
-  videoId,
-  getTheVidId,
-}) => {
+const SearchPageCard = (props) => {
+  const { image, vidName, channelName, getTheVid } = props;
   const uploadTime = Math.ceil(Math.random() * 10);
 
   const TIME_ARR = ["hours", "days", "months", "years"];
@@ -16,14 +11,14 @@ const SearchPageCard = ({
 
   const views = Math.ceil(Math.random() * 20);
 
-  const getVideoId = () => {
-    getTheVidId(videoId);
+  const getVideo = () => {
+    getTheVid(props);
   };
 
   // console.log("the current clicked videoId is ", clickedVideo);
 
   return (
-    <div className="searchPageCard" onClick={getVideoId}>
+    <div className="searchPageCard" onClick={getVideo}>
       <div className="searchPageThumbnail">
         <img srcSet={image} alt="" />
       </div>

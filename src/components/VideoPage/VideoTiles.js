@@ -7,8 +7,8 @@ const VideoTiles = ({ youtubeObj }) => {
 
   const tenResults = youtubeObj.slice(0, 10);
 
-  const didItClick = () => {
-    console.log(tenResults[1].id.videoId, "clicked in videoPage component");
+  const didItClick = (vid) => {
+    // console.log(vid, "clicked in videoTiles component");
   };
 
   return (
