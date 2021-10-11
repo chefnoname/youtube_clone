@@ -3,7 +3,7 @@ import SearchPageCard from "./SearchPageCard";
 import "./SearchPage.css";
 import { useState } from "react";
 
-const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
+const SearchPage = ({ youtubeObj, getTheSearchedVid, clearVideoData }) => {
   const [clickedVideo, setClickedVideo] = useState("");
 
   const getTheVid = (e) => {

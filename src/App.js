@@ -13,9 +13,7 @@ const App = () => {
   const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
 
-  const queryStr = searchResults
-    ? searchResults
-    : "idris abkar surah mutaffifeen";
+  const queryStr = searchResults ? searchResults : "how to code";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -62,6 +60,11 @@ const App = () => {
     searchPageClickedVid,
   };
 
+  const clearVideoData = (e) => {
+    setHomePageClickedVid(e);
+    setSearchPageClickedVid(e);
+  };
+
   // console.log(searchPageClickedVid);
   // console.log(videoDataFromClickedVid);
   return (
@@ -69,6 +72,9 @@ const App = () => {
       <PrimarySearchAppBar
         changeQueryString={(e) => {
           changeQueryString(e);
+        }}
+        clearVideoData={(e) => {
+          clearVideoData(e);
         }}
       />
       <div className="formatting">
@@ -86,6 +92,9 @@ const App = () => {
             youtubeObj={youtubeObj}
             getTheSearchedVid={(e) => {
               getTheSearchedVid(e);
+            }}
+            clearVideoData={(e) => {
+              clearVideoData(e);
             }}
           />
         )}

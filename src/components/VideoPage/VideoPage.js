@@ -18,7 +18,7 @@ const VideoPage = (props) => {
 
   // setClickedSideVid("");
   // const { videoId: clickedSideVideoId } = clickedSideVid.id;
-
+  console.log(homePageClickedVid);
   // console.log(clickedSideVideoId, "this is the clickedsidevideoid");
 
   const youtubeURL = `https://youtube.com/embed/${

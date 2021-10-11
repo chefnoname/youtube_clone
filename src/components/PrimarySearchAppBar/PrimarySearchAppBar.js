@@ -59,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const PrimarySearchAppBar = ({ changeQueryString }) => {
+const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -89,8 +89,9 @@ const PrimarySearchAppBar = ({ changeQueryString }) => {
     }
   };
 
-  const clearQueryString = (e) => {
+  const clearQueryString = () => {
     changeQueryString(null);
+    clearVideoData(null);
   };
 
   const menuId = "primary-search-account-menu";
