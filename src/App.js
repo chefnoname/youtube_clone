@@ -40,12 +40,13 @@ const App = () => {
 
   useEffect(() => {
     clearingSearchResult();
-  }, [searchPageClickedVid]);
+  }, [searchPageClickedVid, homePageClickedVid]);
 
   // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
     setSearchResults(e);
     setDeleteTheSearchResults(false);
+    setHomePageClickedVid();
   };
 
   // FUNCTION TO GET THE VIDEO OBJECT FROM A SEARCHED RESULT
@@ -73,13 +74,13 @@ const App = () => {
   };
 
   const clearingSearchResult = () => {
-    if (searchPageClickedVid && !deleteTheSearchResults) {
+    if (
+      (searchPageClickedVid && !deleteTheSearchResults) ||
+      (homePageClickedVid && !deleteTheSearchResults)
+    ) {
       setDeleteTheSearchResults(true);
     }
   };
-
-  console.log(searchPageClickedVid, "app.js");
-  console.log(youtubeObj);
 
   return (
     <>

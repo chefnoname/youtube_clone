@@ -14,10 +14,6 @@ const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
     getTheSearchedVid(clickedVideo);
   };
 
-  // const clearSearchResults = () => {
-  //   changeQueryString(null);
-  // };
-
   getTheClickedVid();
 
   return (

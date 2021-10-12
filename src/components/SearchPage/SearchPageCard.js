@@ -15,8 +15,6 @@ const SearchPageCard = (props) => {
     getTheVid(props);
   };
 
-  // console.log("the current clicked videoId is ", clickedVideo);
-  // console.log(props);
   return (
     <div className="searchPageCard" onClick={getVideo}>
       <div className="searchPageThumbnail">
