@@ -24,6 +24,33 @@ import "./SideBar.css";
 
 const SideBar = () => {
   const [state, setState] = useState(true);
+  const [youtubeObj, setYoutubeObj] = useState([]);
+
+  const queryStr = "coding languages";
+
+  useEffect(() => {
+    const getYoutubeVidObject = async () => {
+      const res = await fetch(
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=7&order=date`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+            "x-rapidapi-key":
+              "2895577f1amshc0eab35c83a8b00p17ae26jsnfc082aac1ef7",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      setYoutubeObj(data.items);
+    };
+
+    getYoutubeVidObject();
+  }, [queryStr]);
+
+  console.log(youtubeObj);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
