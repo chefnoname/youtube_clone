@@ -1,5 +1,4 @@
 import PrimarySearchAppBar from "./components/PrimarySearchAppBar/PrimarySearchAppBar";
-import SideBar from "./components/SideBar/SideBar";
 import YouTubeVids from "./components/YouTubeVids/YouTubeVids";
 import SearchPage from "./components/SearchPage/SearchPage";
 import VideoPage from "./components/VideoPage/VideoPage";
@@ -89,7 +88,6 @@ const App = () => {
         clearVideoData={clearVideoData}
       />
       <div className="formatting">
-        <SideBar />
         {!searchResults && !homePageClickedVid && !searchPageClickedVid && (
           <YouTubeVids
             youtubeObj={youtubeObj}
