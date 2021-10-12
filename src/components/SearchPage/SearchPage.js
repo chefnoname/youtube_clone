@@ -14,6 +14,10 @@ const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
     getTheSearchedVid(clickedVideo);
   };
 
+  // const clearSearchResults = () => {
+  //   changeQueryString(null);
+  // };
+
   getTheClickedVid();
 
   return (
@@ -25,9 +29,7 @@ const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
           vidName={youtubeVid.snippet.title}
           channelName={youtubeVid.snippet.channelTitle}
           videoId={youtubeVid.id.videoId}
-          getTheVid={(e) => {
-            getTheVid(e);
-          }}
+          getTheVid={getTheVid}
         />
       ))}
     </div>

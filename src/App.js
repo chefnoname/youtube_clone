@@ -40,11 +40,12 @@ const App = () => {
 
   useEffect(() => {
     clearingSearchResult();
-  }, [searchResults]);
+  }, [searchPageClickedVid]);
 
   // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
     setSearchResults(e);
+    setDeleteTheSearchResults(false);
   };
 
   // FUNCTION TO GET THE VIDEO OBJECT FROM A SEARCHED RESULT
@@ -72,46 +73,41 @@ const App = () => {
   };
 
   const clearingSearchResult = () => {
-    if (deleteTheSearchResults) {
-      setDeleteTheSearchResults(!deleteTheSearchResults);
+    if (searchPageClickedVid && !deleteTheSearchResults) {
+      setDeleteTheSearchResults(true);
     }
   };
 
-  console.log(deleteTheSearchResults, searchResults);
+  console.log(searchPageClickedVid, "app.js");
+  console.log(youtubeObj);
 
   return (
     <>
       <PrimarySearchAppBar
-        changeQueryString={(e) => {
-          changeQueryString(e);
-        }}
-        clearVideoData={(e) => {
-          clearVideoData(e);
-        }}
+        changeQueryString={changeQueryString}
+        clearVideoData={clearVideoData}
       />
       <div className="formatting">
         <SideBar />
-        {!searchResults && !homePageClickedVid && (
+        {!searchResults && !homePageClickedVid && !searchPageClickedVid && (
           <YouTubeVids
             youtubeObj={youtubeObj}
-            getTheHomepageVid={(e) => {
-              getTheHomepageVid(e);
-            }}
+            getTheHomepageVid={getTheHomepageVid}
           />
         )}
 
-        {searchResults && !searchPageClickedVid && !deleteTheSearchResults && (
-          <SearchPage
-            youtubeObj={youtubeObj}
-            getTheSearchedVid={(e) => {
-              getTheSearchedVid(e);
-            }}
-          />
-        )}
+        {searchResults &&
+          (!searchPageClickedVid || !deleteTheSearchResults) && (
+            <SearchPage
+              youtubeObj={youtubeObj}
+              getTheSearchedVid={getTheSearchedVid}
+            />
+          )}
 
-        {(homePageClickedVid || searchPageClickedVid) && (
-          <VideoPage props={videoDataFromClickedVid} />
-        )}
+        {(homePageClickedVid || searchPageClickedVid) &&
+          deleteTheSearchResults && (
+            <VideoPage props={videoDataFromClickedVid} />
+          )}
       </div>
     </>
   );

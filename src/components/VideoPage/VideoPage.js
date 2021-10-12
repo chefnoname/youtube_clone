@@ -16,14 +16,9 @@ const VideoPage = (props) => {
     setClickedSideVid(e);
   };
 
-  // setClickedSideVid("");
-  // const { videoId: clickedSideVideoId } = clickedSideVid.id;
-  console.log(homePageClickedVid);
-  // console.log(clickedSideVideoId, "this is the clickedsidevideoid");
-
   const youtubeURL = `https://youtube.com/embed/${
     clickedSideVid ? clickedSideVid.id.videoId : videoId
-  }?autoplay=1`;
+  }`;
 
   return (
     <div className="container">
@@ -38,9 +33,7 @@ const VideoPage = (props) => {
       <div className="sideVideos">
         <VideoTiles
           youtubeObj={youtubeObj}
-          handleClickedSideVid={(e) => {
-            handleClickedSideVid(e);
-          }}
+          handleClickedSideVid={handleClickedSideVid}
         />
       </div>
     </div>

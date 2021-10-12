@@ -14,6 +14,8 @@ const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
 
   handleClickedVid();
 
+  // console.log(tenResults);
+
   return (
     <div>
       {tenResults.map((vid, i) => (
