@@ -269,8 +269,7 @@ const SideBar = () => {
         noWrap
         component="div"
         sx={{
-          ml: 3,
-          mt: 2,
+          m: 3,
           color: "#6c6c6c",
           fontSize: "12px",
         }}
@@ -285,7 +284,7 @@ const SideBar = () => {
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon sx={{ color: "white" }} />
+            <MenuIcon sx={{ color: "white", mr: 2.5 }} />
           </Button>
           <Drawer
             anchor={anchor}

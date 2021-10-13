@@ -170,7 +170,7 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, mb: "30px" }}>
+    <Box sx={{ flexGrow: 1, position: "fixed", width: "100%" }}>
       <AppBar position="static" sx={{ backgroundColor: "#202020" }}>
         <Toolbar>
           <IconButton

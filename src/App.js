@@ -5,6 +5,7 @@ import VideoPage from "./components/VideoPage/VideoPage";
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import DummyIcons from "./components/DummyIcons/DummyIcons";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
@@ -13,12 +14,12 @@ const App = () => {
   const [homePageClickedVid, setHomePageClickedVid] = useState();
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
 
-  const queryStr = searchResults ? searchResults : "how to code";
+  const queryStr = searchResults ? searchResults : "the simpsons";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
       const res = await fetch(
-        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=100&order=date`,
         {
           method: "GET",
           headers: {
@@ -88,6 +89,8 @@ const App = () => {
         clearVideoData={clearVideoData}
       />
       <div className="formatting">
+        {!deleteTheSearchResults && <DummyIcons />}
+
         {!searchResults && !homePageClickedVid && !searchPageClickedVid && (
           <YouTubeVids
             youtubeObj={youtubeObj}

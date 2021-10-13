@@ -2,7 +2,8 @@
   width: 90vw;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 100px 70px;
+  overflow-x: hidden;
 }
 
 .sideVideos {
