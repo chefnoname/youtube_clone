@@ -6,6 +6,7 @@ import DummyIcons from "./components/DummyIcons/DummyIcons";
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import ChipBar from "./components/ChipBar/ChipBar";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
@@ -88,6 +89,7 @@ const App = () => {
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
       />
+      <ChipBar />
       <div className="formatting">
         {!deleteTheSearchResults && <DummyIcons />}
 
