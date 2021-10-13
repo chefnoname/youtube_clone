@@ -18,6 +18,16 @@ import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import LocalMoviesOutlinedIcon from "@mui/icons-material/LocalMoviesOutlined";
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
+import SettingsInputAntennaOutlinedIcon from "@mui/icons-material/SettingsInputAntennaOutlined";
+import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
+import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
+import SportsSoccerOutlinedIcon from "@mui/icons-material/SportsSoccerOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 
 import { useState, useEffect } from "react";
 import "./SideBar.css";
@@ -26,7 +36,7 @@ const SideBar = () => {
   const [state, setState] = useState(true);
   const [youtubeObj, setYoutubeObj] = useState([]);
 
-  const queryStr = "coding languages";
+  const queryStr = "Javascript 2021";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -50,7 +60,9 @@ const SideBar = () => {
     getYoutubeVidObject();
   }, [queryStr]);
 
-  console.log(youtubeObj);
+  const objectSnippet = youtubeObj.map((obj) => {
+    return obj.snippet;
+  });
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -72,12 +84,41 @@ const SideBar = () => {
     ["Your Videos", <OndemandVideoOutlinedIcon sx={{ color: "white" }} />],
     ["Watch Later", <WatchLaterOutlinedIcon sx={{ color: "white" }} />],
     ["Show More", <KeyboardArrowDownOutlinedIcon sx={{ color: "white" }} />],
+    ["YouTube Premium", <YouTubeIcon sx={{ color: "white" }} />], // POSITION 9 IN THE ARRAY
+    ["Movies & Shows", <LocalMoviesOutlinedIcon sx={{ color: "white" }} />],
+    ["Gaming", <SportsEsportsOutlinedIcon sx={{ color: "white" }} />],
+    ["Live", <SettingsInputAntennaOutlinedIcon sx={{ color: "white" }} />],
+    [
+      "Fashion & Beauty",
+      <SentimentVerySatisfiedOutlinedIcon sx={{ color: "white" }} />,
+    ],
+    ["Learning", <LightbulbOutlinedIcon sx={{ color: "white" }} />],
+    ["Sports", <SportsSoccerOutlinedIcon sx={{ color: "white" }} />],
+    ["Settings", <SettingsOutlinedIcon sx={{ color: "white" }} />], // POSITION 16 IN THE ARRAY
+    ["Report history", <FlagOutlinedIcon sx={{ color: "white" }} />],
+    ["Help", <HelpOutlineOutlinedIcon sx={{ color: "white" }} />],
+    ["Send feedback", <FeedbackOutlinedIcon sx={{ color: "white" }} />],
+  ];
+
+  const copyrightLabels = [
+    "About",
+    "Press",
+    "Copyright",
+    "Contact us",
+    "Creators",
+    "Advertise",
+    "Developers", // POSITIOn 6 IN THE ARRAY
+    "Terms",
+    "Privacy",
+    "Policy & Safety",
+    "How YouTube works",
+    "Test new features",
   ];
 
   const list = (anchor) => (
     <Box
       sx={{
-        width: 250,
+        width: 270,
         backgroundColor: "#202020",
         color: "#fff",
         height: "100%",
@@ -135,9 +176,107 @@ const SideBar = () => {
       >
         SUBSCRIPTIONS
       </Typography>
-      <div className="imagesForChannelSubs">
-        <img src="" alt="" />
+      <List>
+        {objectSnippet.map((snippet, i) => (
+          <ListItem button key={i}>
+            <ListItemIcon>
+              <img
+                src={snippet.thumbnails.high.url}
+                className="imagesForChannelSubs"
+                alt=""
+              />
+            </ListItemIcon>
+            <ListItemText primary={snippet.channelTitle} />
+          </ListItem>
+        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <KeyboardArrowDownOutlinedIcon sx={{ color: "white" }} />
+          </ListItemIcon>
+          <ListItemText primary="Show More" />
+        </ListItem>
+      </List>
+      <Divider sx={{ backgroundColor: "#2c2c2c" }} />
+      <Typography
+        variant="subtitle2"
+        noWrap
+        component="div"
+        sx={{
+          ml: 3,
+          mt: 2,
+          color: "#aaa",
+          fontWeight: "bolder",
+          letterSpacing: "1px",
+        }}
+      >
+        MORE FROM YOUTUBE
+      </Typography>
+      <List>
+        {menuOptions.slice(8, 15).map(([label, Icon]) => (
+          <ListItem button key={label}>
+            <ListItemIcon>{Icon}</ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider sx={{ backgroundColor: "#2c2c2c", fontWeight: "bolder" }} />
+      <List>
+        {menuOptions.slice(15, 19).map(([label, Icon]) => (
+          <ListItem button key={label}>
+            <ListItemIcon>{Icon}</ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItem>
+        ))}
+      </List>
+
+      <Divider sx={{ backgroundColor: "#2c2c2c" }} />
+      <div className="copyright">
+        {copyrightLabels.slice(0, 7).map((label) => (
+          <Typography
+            variant="subtitle2"
+            sx={{
+              fontSize: "13px",
+              mr: "5px",
+              fontWeight: "bolder",
+              color: "#aaaaaa",
+            }}
+            key={label}
+          >
+            {label}
+          </Typography>
+        ))}
       </div>
+
+      <div className="copyright copyright2">
+        {copyrightLabels.slice(7, 13).map((label) => (
+          <Typography
+            variant="subtitle2"
+            sx={{
+              fontSize: "13px",
+              mr: "5px",
+              fontWeight: "bolder",
+              color: "#aaaaaa",
+            }}
+            key={label}
+          >
+            {label}
+          </Typography>
+        ))}
+      </div>
+
+      <Typography
+        variant="subtitle2"
+        noWrap
+        component="div"
+        sx={{
+          ml: 3,
+          mt: 2,
+          color: "#6c6c6c",
+          fontSize: "12px",
+        }}
+      >
+        © 2021 Google LLC
+      </Typography>
     </Box>
   );
 
