@@ -178,31 +178,30 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
         zIndex: "100",
       }}
     >
-      <AppBar position="static" sx={{ backgroundColor: "#202020" }}>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#202020",
+          height: 60,
+          borderBottom: "1px solid #373737",
+        }}
+      >
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 1 }}
+            // sx={{ mr: 1 }}
           >
             <SideBar />
           </IconButton>
           <div className="goHome">
             <YouTubeIcon
-              sx={{ color: "red", fontSize: "30px", mr: 1 }}
+              sx={{ color: "red", fontSize: "35px", mt: 3 }}
               onClick={clearQueryString}
             />
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
-              onClick={clearQueryString}
-            >
-              YouTube
-            </Typography>
+            <p className="youtubeName">YouTube</p>
           </div>
           <Search>
             <SearchIconWrapper>

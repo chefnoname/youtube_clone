@@ -9,7 +9,8 @@
 .youtubeLogo {
   display: flex;
   margin-left: 20px;
-  margin-top: 22px;
+  /* margin-top: 22px; */
+  /* margin-top: -5px; */
 }
 
 .imagesForChannelSubs {
@@ -38,6 +39,23 @@
 
 .copyright2 {
   width: 200px !important;
+}
+
+.firstItemOnList {
+  background-color: #383838;
+}
+
+.listItems2 {
+  width: 250px;
+}
+
+.listItems2:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+.sideBarBurgerMenu {
+  margin: 0 -18px;
 }
 
 ::-webkit-scrollbar {

@@ -1,6 +1,10 @@
 import Typography from "@mui/material/Typography";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
+import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 import "./YouTubeCard.css";
+
 const YouTubeCard = (props) => {
   const { image, vidName, channelName, getTheVid } = props;
 
@@ -11,6 +15,15 @@ const YouTubeCard = (props) => {
 
   const views = Math.ceil(Math.random() * 20);
 
+  const getRandomArbitrary = (min, max) => {
+    return Math.ceil(Math.random() * (max - min) + min);
+  };
+
+  const timeStamp = {
+    minutes: getRandomArbitrary(59, 10),
+    seconds: getRandomArbitrary(59, 10),
+  };
+
   const getClickedVid = () => {
     getTheVid(props);
   };
@@ -18,10 +31,50 @@ const YouTubeCard = (props) => {
   return (
     <div className="youtubeCard" onClick={getClickedVid}>
       <div className="thumbnail">
-        <img srcSet={image} alt="" />
-        <div className="vidIcons">
-          <h1>HEY</h1>
+        <div className="timeStamp">
+          <Typography
+            variant="subtitle2"
+            sx={{ fontWeight: "bolder", fontSize: "12px", ml: 0.5 }}
+          >
+            {`${timeStamp.minutes}:${timeStamp.seconds}`}
+          </Typography>
         </div>
+        <div className="vidIcons">
+          <div className="clockwork">
+            <div className="iconLabel">
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: "bolder", fontSize: "12px", mt: 0.5 }}
+              >
+                WATCH LATER
+              </Typography>
+            </div>
+
+            <div className="icon">
+              <WatchLaterOutlinedIcon />
+            </div>
+          </div>
+
+          <div className="clockwork">
+            <div className="iconLabel">
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: "bolder", fontSize: "12px", mt: 0.5 }}
+              >
+                ADD TO QUEUE
+              </Typography>
+            </div>
+
+            <div className="icon">
+              <PlaylistPlayOutlinedIcon />
+            </div>
+          </div>
+
+          <div className="dots">
+            <MoreVertOutlinedIcon sx={{ mt: 11, ml: 23 }} />
+          </div>
+        </div>
+        <img srcSet={image} alt="" />
       </div>
 
       <div className="videoDetails">

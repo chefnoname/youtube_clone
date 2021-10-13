@@ -11,7 +11,7 @@ import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
 import "./DummyIcons.css";
 
 const menuOptions = [
-  ["Home", <HomeIcon sx={{ color: "white" }} />],
+  ["Home", <HomeIcon sx={{ color: "white", mt: 2 }} />],
   ["Explore", <ExploreOutlinedIcon sx={{ color: "white" }} />],
   ["Subscriptions", <SubscriptionsOutlinedIcon sx={{ color: "white" }} />],
   ["Library", <VideoLibraryOutlinedIcon sx={{ color: "white" }} />],
@@ -21,7 +21,7 @@ const DummyIcons = () => {
   return (
     <Box
       sx={{
-        width: 90,
+        width: 75,
         height: "100%",
         backgroundColor: "#202020",
         color: "#fff",
@@ -32,16 +32,18 @@ const DummyIcons = () => {
     >
       <List>
         {menuOptions.map(([label, Icon]) => (
-          <ListItem
-            sx={{ display: "flex", flexDirection: "column", mt: 3, mb: 3 }}
-            key={label}
-          >
-            <ListItemIcon sx={{ ml: 4 }}>{Icon}</ListItemIcon>
-            <ListItemText
-              primary={label}
-              primaryTypographyProps={{ fontSize: "10px" }}
-            />
-          </ListItem>
+          <div className="listItems">
+            <ListItem
+              sx={{ display: "flex", flexDirection: "column" }}
+              key={label}
+            >
+              <ListItemIcon sx={{ ml: 4 }}>{Icon}</ListItemIcon>
+              <ListItemText
+                primary={label}
+                primaryTypographyProps={{ fontSize: "10px" }}
+              />
+            </ListItem>
+          </div>
         ))}
       </List>
     </Box>

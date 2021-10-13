@@ -129,36 +129,39 @@ const SideBar = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <div className="burgerMenu">
-        <MenuIcon sx={{ color: "white", mt: 3, ml: 2, mb: 3 }} />
+        <MenuIcon sx={{ color: "white", mt: 3.5, ml: 2, mb: 3 }} />
+
         <div className="youtubeLogo">
-          <YouTubeIcon sx={{ color: "red", fontSize: "30px", mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" }, mr: 5 }}
-          >
-            YouTube
-          </Typography>
+          <YouTubeIcon sx={{ color: "red", fontSize: "35px", mt: 3 }} />
+
+          <p className="youtubeName">YouTube</p>
         </div>
       </div>
 
       <List>
-        {menuOptions.slice(0, 3).map(([label, Icon]) => (
-          <ListItem button key={label}>
-            <ListItemIcon>{Icon}</ListItemIcon>
-            <ListItemText primary={label} />
-          </ListItem>
+        {menuOptions.slice(0, 3).map(([label, Icon], i) => (
+          <div
+            className={`${
+              i === 0 ? "listItems2 firstItemOnList" : "listItems2"
+            }`}
+          >
+            <ListItem button key={label}>
+              <ListItemIcon>{Icon}</ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </div>
         ))}
       </List>
       <Divider sx={{ backgroundColor: "#2c2c2c" }} />
 
       <List>
         {menuOptions.slice(3, 8).map(([label, Icon]) => (
-          <ListItem button key={label}>
-            <ListItemIcon>{Icon}</ListItemIcon>
-            <ListItemText primary={label} />
-          </ListItem>
+          <div className="listItems2">
+            <ListItem button key={label}>
+              <ListItemIcon>{Icon}</ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </div>
         ))}
       </List>
       <Divider sx={{ backgroundColor: "#2c2c2c" }} />
@@ -178,23 +181,27 @@ const SideBar = () => {
       </Typography>
       <List>
         {objectSnippet.map((snippet, i) => (
-          <ListItem button key={i}>
-            <ListItemIcon>
-              <img
-                src={snippet.thumbnails.high.url}
-                className="imagesForChannelSubs"
-                alt=""
-              />
-            </ListItemIcon>
-            <ListItemText primary={snippet.channelTitle} />
-          </ListItem>
+          <div className="listItems2">
+            <ListItem button key={i}>
+              <ListItemIcon>
+                <img
+                  src={snippet.thumbnails.high.url}
+                  className="imagesForChannelSubs"
+                  alt=""
+                />
+              </ListItemIcon>
+              <ListItemText primary={snippet.channelTitle} />
+            </ListItem>
+          </div>
         ))}
-        <ListItem button>
-          <ListItemIcon>
-            <KeyboardArrowDownOutlinedIcon sx={{ color: "white" }} />
-          </ListItemIcon>
-          <ListItemText primary="Show More" />
-        </ListItem>
+        <div className="listItems2">
+          <ListItem button>
+            <ListItemIcon>
+              <KeyboardArrowDownOutlinedIcon sx={{ color: "white" }} />
+            </ListItemIcon>
+            <ListItemText primary="Show More" />
+          </ListItem>
+        </div>
       </List>
       <Divider sx={{ backgroundColor: "#2c2c2c" }} />
       <Typography
@@ -213,19 +220,23 @@ const SideBar = () => {
       </Typography>
       <List>
         {menuOptions.slice(8, 15).map(([label, Icon]) => (
-          <ListItem button key={label}>
-            <ListItemIcon>{Icon}</ListItemIcon>
-            <ListItemText primary={label} />
-          </ListItem>
+          <div className="listItems2">
+            <ListItem button key={label}>
+              <ListItemIcon>{Icon}</ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </div>
         ))}
       </List>
       <Divider sx={{ backgroundColor: "#2c2c2c", fontWeight: "bolder" }} />
       <List>
         {menuOptions.slice(15, 19).map(([label, Icon]) => (
-          <ListItem button key={label}>
-            <ListItemIcon>{Icon}</ListItemIcon>
-            <ListItemText primary={label} />
-          </ListItem>
+          <div className="listItems2">
+            <ListItem button key={label}>
+              <ListItemIcon>{Icon}</ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </div>
         ))}
       </List>
 
@@ -280,11 +291,11 @@ const SideBar = () => {
   );
 
   return (
-    <div>
+    <div className="sideBarBurgerMenu">
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon sx={{ color: "white", mr: 2.5 }} />
+            <MenuIcon sx={{ color: "white" }} />
           </Button>
           <Drawer
             anchor={anchor}

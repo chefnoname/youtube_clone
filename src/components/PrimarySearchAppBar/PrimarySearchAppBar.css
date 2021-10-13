@@ -5,3 +5,10 @@
 .goHome:hover {
   cursor: pointer;
 }
+
+.youtubeName {
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: 80px;
+}
