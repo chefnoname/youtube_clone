@@ -19,6 +19,9 @@ const YouTubeCard = (props) => {
     <div className="youtubeCard" onClick={getClickedVid}>
       <div className="thumbnail">
         <img srcSet={image} alt="" />
+        <div className="vidIcons">
+          <h1>HEY</h1>
+        </div>
       </div>
 
       <div className="videoDetails">
@@ -26,8 +29,11 @@ const YouTubeCard = (props) => {
           <img srcSet={image} alt="" />
         </div>
         <div className="channelInfo">
-          <Typography variant="subtitle2" sx={{ mt: "10px", mb: "20px" }}>
-            {vidName.split(" ").length > 10
+          <Typography
+            variant="subtitle2"
+            sx={{ mt: "10px", width: "200px", fontWeight: "bolder" }}
+          >
+            {vidName.split(" ").length > 8
               ? vidName.split(" ").slice(0, 8).join(" ") + "..."
               : vidName}
           </Typography>

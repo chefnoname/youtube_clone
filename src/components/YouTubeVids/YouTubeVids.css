@@ -1,6 +1,8 @@
 .cardSpacing {
   display: flex;
   flex-wrap: wrap;
-  padding: 100px 140px 0px;
-  width: 100vw;
+  padding-top: 100px;
+  padding-left: 120px;
+  width: 120vw;
+  /* background-color: blue; */
 }

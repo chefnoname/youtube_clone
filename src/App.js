@@ -2,10 +2,10 @@ import PrimarySearchAppBar from "./components/PrimarySearchAppBar/PrimarySearchA
 import YouTubeVids from "./components/YouTubeVids/YouTubeVids";
 import SearchPage from "./components/SearchPage/SearchPage";
 import VideoPage from "./components/VideoPage/VideoPage";
+import DummyIcons from "./components/DummyIcons/DummyIcons";
 import { useState, useEffect } from "react";
 
 import "./App.css";
-import DummyIcons from "./components/DummyIcons/DummyIcons";
 
 const App = () => {
   const [youtubeObj, setYoutubeObj] = useState([]);
@@ -14,12 +14,12 @@ const App = () => {
   const [homePageClickedVid, setHomePageClickedVid] = useState();
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
 
-  const queryStr = searchResults ? searchResults : "the simpsons";
+  const queryStr = searchResults ? searchResults : "TopGear best moments";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
       const res = await fetch(
-        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=100&order=date`,
+        `https://youtube-v31.p.rapidapi.com/search?q=${queryStr}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
         {
           method: "GET",
           headers: {
