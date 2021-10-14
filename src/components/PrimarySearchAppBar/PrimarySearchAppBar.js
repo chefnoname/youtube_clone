@@ -183,7 +183,7 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
         sx={{
           backgroundColor: "#202020",
           height: 60,
-          borderBottom: "1px solid #373737",
+          boxShadow: "none",
         }}
       >
         <Toolbar>

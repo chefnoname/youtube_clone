@@ -1,6 +1,14 @@
 .mainBar {
   position: fixed;
-  top: 50px;
-  left: 300px;
+  top: 60px;
+  left: 75px;
   z-index: 100;
+  width: 100%;
 }
+
+/* .rightArrow {
+  position: absolute;
+  background-color: #212121ee;
+  height: 50px;
+  right: 75px;
+} */
