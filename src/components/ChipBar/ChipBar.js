@@ -4,15 +4,15 @@ import Toolbar from "@mui/material/Toolbar";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChipTags from "./ChipTags";
 
 import { useState, useEffect } from "react";
 
 import "./ChipBar.css";
 
-import ChipTags from "./ChipTags";
-
-const ChipBar = () => {
+const ChipBar = ({ getWordFromChipBar }) => {
   const [randomWordArray, setRandomWordArray] = useState([]);
+  const [wordFromChipTag, setWordFromChipTag] = useState("");
 
   useEffect(() => {
     const getRandomWords = async () => {
@@ -36,7 +36,19 @@ const ChipBar = () => {
     getRandomWords();
   }, []);
 
-  console.log(randomWordArray);
+  const getSelectedWord = (wordFromChipTags) => {
+    setWordFromChipTag(wordFromChipTags);
+    getWordFromChipBar(wordFromChipTags);
+  };
+
+  const resetWordFromChipTags = () => {
+    getWordFromChipBar("TopGear best moments");
+    setWordFromChipTag("");
+  };
+
+  // const getTheNewSearchTerm = () => {
+  //   getWordFromChipBar(wordFromChipTag)
+  // }
 
   return (
     <div className="mainBar">
@@ -54,18 +66,16 @@ const ChipBar = () => {
           <Toolbar variant="dense">
             <Chip
               label="All"
-              sx={{
-                color: "black",
-                backgroundColor: "white",
-                border: "1px solid #5f5f5f",
-                mr: 3,
-                "&:hover": {
-                  cursor: "pointer",
-                },
-              }}
+              className={wordFromChipTag !== "" ? "chip" : "active"}
+              onClick={resetWordFromChipTags}
             />
             {randomWordArray.map((word, i) => (
-              <ChipTags word={word} key={i} />
+              <ChipTags
+                word={word}
+                getSelectedWord={getSelectedWord}
+                key={i}
+                wordFromChipTag={wordFromChipTag}
+              />
             ))}
             <IconButton
               edge="start"
@@ -83,9 +93,7 @@ const ChipBar = () => {
                 borderRadius: 0,
               }}
             >
-              {/* <div className="rightArrow"> */}
               <ChevronRightIcon />
-              {/* </div> */}
             </IconButton>
           </Toolbar>
         </AppBar>

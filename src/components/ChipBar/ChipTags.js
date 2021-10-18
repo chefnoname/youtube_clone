@@ -1,9 +1,12 @@
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import { useState } from "react";
 
-const ChipTags = ({ word }) => {
+import "./ChipTags.css";
+
+const ChipTags = ({ word, getSelectedWord, wordFromChipTag }) => {
   const handleClick = () => {
-    console.info(`You clicked the ${word}`);
+    getSelectedWord(word);
   };
 
   const capitalizeFirstLetter = (string) => {
@@ -15,17 +18,7 @@ const ChipTags = ({ word }) => {
       <Chip
         label={capitalizeFirstLetter(word)}
         onClick={handleClick}
-        sx={{
-          fontWeight: "bolder",
-          color: "white",
-          backgroundColor: "#343434",
-          "&:hover": {
-            backgroundColor: "#4d4d4d",
-          },
-          border: "1px solid #5f5f5f",
-          mr: 2,
-          height: 32,
-        }}
+        className={wordFromChipTag === word ? "active chip" : "chip"}
       />
     </Stack>
   );

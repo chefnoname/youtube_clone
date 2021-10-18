@@ -14,8 +14,10 @@ const App = () => {
   const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
+  const [wordFromChipBar, setWordFromChipBar] = useState("");
+  const [queryStr, setQueryStr] = useState("TopGear best moments");
 
-  const queryStr = searchResults ? searchResults : "TopGear best moments";
+  // const queryStr = searchResults ? searchResults : "TopGear best moments";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -42,6 +44,14 @@ const App = () => {
   useEffect(() => {
     clearingSearchResult();
   }, [searchPageClickedVid, homePageClickedVid]);
+
+  useEffect(() => {
+    if (searchResults) {
+      setQueryStr(searchResults);
+    } else if (wordFromChipBar) {
+      setQueryStr(wordFromChipBar);
+    }
+  }, [searchResults, wordFromChipBar]);
 
   // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
@@ -83,13 +93,19 @@ const App = () => {
     }
   };
 
+  const getWordFromChipBar = (newSearchWord) => {
+    setWordFromChipBar(newSearchWord);
+  };
+
+  console.log(wordFromChipBar, "in the app.js");
+
   return (
     <>
       <PrimarySearchAppBar
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
       />
-      <ChipBar />
+      <ChipBar getWordFromChipBar={getWordFromChipBar} />
       <div className="formatting">
         {!deleteTheSearchResults && <DummyIcons />}
 
