@@ -58,7 +58,7 @@ const YouTubeVids = ({
             wordFromChipBar={wordFromChipBar}
           />
         ))}
-      {scrollY > 6360 &&
+      {scrollY > 6355 &&
         secondLazyLoadYoutubeObj.map((youtubeVid, i) => (
           <YouTubeCard
             key={i}
@@ -73,7 +73,7 @@ const YouTubeVids = ({
             wordFromChipBar={wordFromChipBar}
           />
         ))}
-      {scrollY > 10230 &&
+      {scrollY > 10225 &&
         thirdLazyLoadYoutubeObj.map((youtubeVid, i) => (
           <YouTubeCard
             key={i}

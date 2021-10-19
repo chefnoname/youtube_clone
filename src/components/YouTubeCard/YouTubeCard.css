@@ -1,11 +1,11 @@
-.youtubeCard {
+.cardSpacing .youtubeCard {
   width: 260px;
   margin-right: 15px;
   margin-bottom: 20px;
   position: relative;
 }
 
-.youtubeCard:hover {
+.cardSpacing .youtubeCard:hover {
   cursor: pointer;
 }
 
@@ -16,14 +16,17 @@
   flex-direction: column;
   /* justify-content: flex-end; */
   /* align-items: flex-end; */
-  margin-left: 50px;
   margin-top: 5px;
   height: 250px;
   /* background-color: blue; */
   display: none;
   /* right: 60vw; */
   width: 200px;
+}
+
+.cardSpacing .vidIcons {
   overflow-x: hidden;
+  margin-left: 50px;
 }
 
 .icon {
@@ -33,7 +36,7 @@
   width: 25px;
 }
 
-.clockwork {
+.cardSpacing .clockwork {
   display: flex;
   justify-content: flex-end;
   overflow-x: hidden;
@@ -64,7 +67,7 @@
   z-index: -10;
 }
 
-.clockwork:hover > .iconLabel {
+.cardSpacing .clockwork:hover > .iconLabel {
   /* background: yellow; */
   animation: slideRight 0.5s 0.4s forwards;
 }
@@ -123,4 +126,69 @@
   height: 20px;
   width: 40px;
   background-color: #000;
+}
+
+/* SEARCH PAGE STYLING */
+
+.searchTiles .youtubeCard {
+  width: 90vw;
+  margin-bottom: 30px;
+  display: flex;
+  padding-left: 50px;
+}
+
+.searchTiles .dots {
+  position: absolute;
+  left: 430px;
+  bottom: 220px;
+}
+
+/* .searchPageCard:hover {
+  cursor: pointer;
+} */
+
+.searchTiles .thumbnail img {
+  margin-right: 50px;
+  width: 420px;
+  height: 250px;
+}
+
+/* .searchPageChannelPic img {
+  border-radius: 50%;
+  margin-right: 10px;
+  height: 20px;
+  margin-top: 10px;
+} */
+
+.searchTiles .vidIcons {
+  margin-left: 380px;
+  /* margin-top: 30px; */
+}
+
+.searchPageUploadDetails {
+  display: flex;
+  /* background-color: blueviolet; */
+}
+
+.searchPageChannelInfo {
+  margin-top: 40px;
+}
+
+.searchTiles .clockwork:hover > .iconLabel {
+  /* background: yellow; */
+  animation: searchSlideRight 0.5s 0.4s forwards;
+}
+
+@keyframes searchSlideRight {
+  from {
+    position: absolute;
+    left: -80px;
+    display: none;
+  }
+
+  to {
+    position: absolute;
+    left: -100px;
+    visibility: visible;
+  }
 }

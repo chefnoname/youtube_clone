@@ -32,7 +32,6 @@ const App = () => {
   ];
 
   const scrollY = useScrollPosition(60);
-  console.log("this is the scrollY pos ", Math.floor(scrollY));
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -77,13 +76,7 @@ const App = () => {
       setLazyLoadYoutubeObj(data.items);
     };
 
-    getYoutubeVidObject();
-  }, []);
-
-  // 3RD API CALL TO GET ANOTHER 25 YOUTUBE VIDS TO GIVE ENDLESS SCROLL  AFFECT
-
-  useEffect(() => {
-    const getYoutubeVidObject = async () => {
+    const getSecondYoutubeVidObject = async () => {
       const res = await fetch(
         `https://youtube-v31.p.rapidapi.com/search?q=${endlessScrollSearchRequests[1]}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
         {
@@ -101,13 +94,7 @@ const App = () => {
       setSecondLazyLoadYoutubeObj(data.items);
     };
 
-    getYoutubeVidObject();
-  }, []);
-
-  // 4TH API CALL TO GET ANOTHER 25 YOUTUBE VIDS TO GIVE ENDLESS SCROLL  AFFECT
-
-  useEffect(() => {
-    const getYoutubeVidObject = async () => {
+    const getThirdYoutubeVidObject = async () => {
       const res = await fetch(
         `https://youtube-v31.p.rapidapi.com/search?q=${endlessScrollSearchRequests[2]}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
         {
@@ -126,7 +113,11 @@ const App = () => {
     };
 
     getYoutubeVidObject();
+    getSecondYoutubeVidObject();
+    getThirdYoutubeVidObject();
   }, []);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     clearingSearchResult();
@@ -191,10 +182,12 @@ const App = () => {
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
       />
-      <ChipBar
-        getWordFromChipBar={getWordFromChipBar}
-        wordFromChipBar={wordFromChipBar}
-      />
+      {!searchResults && (
+        <ChipBar
+          getWordFromChipBar={getWordFromChipBar}
+          wordFromChipBar={wordFromChipBar}
+        />
+      )}
       <div className="formatting">
         {!deleteTheSearchResults && <DummyIcons />}
 
@@ -215,6 +208,7 @@ const App = () => {
             <SearchPage
               youtubeObj={youtubeObj}
               getTheSearchedVid={getTheSearchedVid}
+              scrollY={scrollY}
             />
           )}
 
