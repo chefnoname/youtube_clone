@@ -3,6 +3,8 @@ import YouTubeVids from "./components/YouTubeVids/YouTubeVids";
 import SearchPage from "./components/SearchPage/SearchPage";
 import VideoPage from "./components/VideoPage/VideoPage";
 import DummyIcons from "./components/DummyIcons/DummyIcons";
+import useScrollPosition from "@react-hook/window-scroll";
+
 import { useState, useEffect } from "react";
 
 import "./App.css";
@@ -18,7 +20,19 @@ const App = () => {
     "TopGear best moments"
   );
   const [queryStr, setQueryStr] = useState("TopGear best moments");
-  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const [lazyLoadYoutubeObj, setLazyLoadYoutubeObj] = useState([]);
+  const [secondLazyLoadYoutubeObj, setSecondLazyLoadYoutubeObj] = useState([]);
+  const [thirdLazyLoadYoutubeObj, setThirdLazyLoadYoutubeObj] = useState([]);
+
+  const endlessScrollSearchRequests = [
+    "cat videos",
+    "vegan recipes",
+    "Maldives holiday",
+  ];
+
+  const scrollY = useScrollPosition(60);
+  console.log("this is the scrollY pos ", Math.floor(scrollY));
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -41,6 +55,78 @@ const App = () => {
 
     getYoutubeVidObject();
   }, [queryStr]);
+
+  // ANOTHER CALL TO THE API TO ADD MORE VIDEOS WHEN DOCUMENT HAS REACHED CERTAIN HEIGHT - IMITATE ENDLESS SCROLL
+
+  useEffect(() => {
+    const getYoutubeVidObject = async () => {
+      const res = await fetch(
+        `https://youtube-v31.p.rapidapi.com/search?q=${endlessScrollSearchRequests[0]}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+            "x-rapidapi-key":
+              "2895577f1amshc0eab35c83a8b00p17ae26jsnfc082aac1ef7",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      setLazyLoadYoutubeObj(data.items);
+    };
+
+    getYoutubeVidObject();
+  }, []);
+
+  // 3RD API CALL TO GET ANOTHER 25 YOUTUBE VIDS TO GIVE ENDLESS SCROLL  AFFECT
+
+  useEffect(() => {
+    const getYoutubeVidObject = async () => {
+      const res = await fetch(
+        `https://youtube-v31.p.rapidapi.com/search?q=${endlessScrollSearchRequests[1]}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+            "x-rapidapi-key":
+              "2895577f1amshc0eab35c83a8b00p17ae26jsnfc082aac1ef7",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      setSecondLazyLoadYoutubeObj(data.items);
+    };
+
+    getYoutubeVidObject();
+  }, []);
+
+  // 4TH API CALL TO GET ANOTHER 25 YOUTUBE VIDS TO GIVE ENDLESS SCROLL  AFFECT
+
+  useEffect(() => {
+    const getYoutubeVidObject = async () => {
+      const res = await fetch(
+        `https://youtube-v31.p.rapidapi.com/search?q=${endlessScrollSearchRequests[2]}&part=snippet%2Cid&regionCode=US&maxResults=50&order=date`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+            "x-rapidapi-key":
+              "2895577f1amshc0eab35c83a8b00p17ae26jsnfc082aac1ef7",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      setThirdLazyLoadYoutubeObj(data.items);
+    };
+
+    getYoutubeVidObject();
+  }, []);
 
   useEffect(() => {
     clearingSearchResult();
@@ -116,6 +202,11 @@ const App = () => {
           <YouTubeVids
             youtubeObj={youtubeObj}
             getTheHomepageVid={getTheHomepageVid}
+            scrollY={scrollY}
+            wordFromChipBar={wordFromChipBar}
+            lazyLoadYoutubeObj={lazyLoadYoutubeObj}
+            secondLazyLoadYoutubeObj={secondLazyLoadYoutubeObj}
+            thirdLazyLoadYoutubeObj={thirdLazyLoadYoutubeObj}
           />
         )}
 

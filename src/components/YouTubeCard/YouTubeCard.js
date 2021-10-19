@@ -2,27 +2,40 @@ import Typography from "@mui/material/Typography";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-
+import { useEffect, useState } from "react";
 import "./YouTubeCard.css";
 
 const YouTubeCard = (props) => {
-  const { image, vidName, channelName, getTheVid } = props;
-
-  const uploadTime = Math.ceil(Math.random() * 10);
+  const { image, vidName, channelName, getTheVid, scrollY, wordFromChipBar } =
+    props;
 
   const TIME_ARR = ["hours", "days", "months", "years"];
-  const TIME_FRAME = TIME_ARR[Math.floor(Math.random() * 4)];
 
-  const views = Math.ceil(Math.random() * 20);
+  const [uploadTime, setuploadTime] = useState(Math.ceil(Math.random() * 10));
+
+  const [timeFrame, setTimeFrame] = useState(
+    TIME_ARR[Math.floor(Math.random() * 4)]
+  );
+
+  const [views, setViews] = useState(Math.ceil(Math.random() * 20));
 
   const getRandomArbitrary = (min, max) => {
     return Math.ceil(Math.random() * (max - min) + min);
   };
 
-  const timeStamp = {
+  const [timeStamp, setTimeStamp] = useState({
     minutes: getRandomArbitrary(59, 10),
     seconds: getRandomArbitrary(59, 10),
-  };
+  });
+
+  useEffect(() => {
+    setuploadTime(Math.ceil(Math.random() * 10));
+    setViews(Math.ceil(Math.random() * 20));
+    setTimeStamp({
+      minutes: getRandomArbitrary(59, 10),
+      seconds: getRandomArbitrary(59, 10),
+    });
+  }, [scrollY < 0, wordFromChipBar]);
 
   const getClickedVid = () => {
     getTheVid(props);
@@ -97,7 +110,7 @@ const YouTubeCard = (props) => {
           </Typography>
 
           <Typography variant="subtitle2" sx={{ color: "#848584" }}>
-            {`${uploadTime} ${TIME_FRAME} ago ~  ${views}K views`}
+            {`${uploadTime} ${timeFrame} ago ~  ${views}K views`}
           </Typography>
         </div>
       </div>
