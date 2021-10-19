@@ -36,7 +36,7 @@ const SideBar = () => {
   const [state, setState] = useState(true);
   const [youtubeObj, setYoutubeObj] = useState([]);
 
-  const queryStr = "Javascript 2021";
+  const queryStr = "WorldCup";
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {

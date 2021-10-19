@@ -16,8 +16,7 @@ const App = () => {
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
   const [wordFromChipBar, setWordFromChipBar] = useState("");
   const [queryStr, setQueryStr] = useState("TopGear best moments");
-
-  // const queryStr = searchResults ? searchResults : "TopGear best moments";
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     const getYoutubeVidObject = async () => {
@@ -52,6 +51,11 @@ const App = () => {
       setQueryStr(wordFromChipBar);
     }
   }, [searchResults, wordFromChipBar]);
+
+  // useEffect(() => {
+  //   // let scrollY = windows.scrollY;
+  //   console.log(windows.scrollY);
+  // }, [windows.scrollY]);
 
   // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
@@ -97,10 +101,14 @@ const App = () => {
     setWordFromChipBar(newSearchWord);
   };
 
-  console.log(wordFromChipBar, "in the app.js");
+  const getScrollPos = () => {
+    // setScrollPosition(document.scrollY);
+    console.log(window.scrollY);
+  };
+  console.log(scrollPosition);
 
   return (
-    <>
+    <div onScroll={getScrollPos}>
       <PrimarySearchAppBar
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
@@ -129,7 +137,7 @@ const App = () => {
             <VideoPage props={videoDataFromClickedVid} />
           )}
       </div>
-    </>
+    </div>
   );
 };
 
