@@ -209,6 +209,7 @@ const App = () => {
               youtubeObj={youtubeObj}
               getTheSearchedVid={getTheSearchedVid}
               scrollY={scrollY}
+              searchResults={searchResults}
             />
           )}
 

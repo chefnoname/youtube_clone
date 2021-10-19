@@ -20,7 +20,7 @@ const VideoCard = ({ channelName, image, vidName, url }) => {
           {vidName}
         </Typography>
         <Typography variant="subtitle2" sx={{ color: "#AAAAAA", mb: "20px" }}>
-          333,352 views ~ Sep 11, 2019
+          333,352 views · Sep 11, 2019
         </Typography>
         <div className="channelDetails">
           <img srcSet={image} alt="" />

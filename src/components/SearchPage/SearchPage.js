@@ -5,7 +5,7 @@ import YouTubeCard from "../YouTubeCard/YouTubeCard";
 import "./SearchPage.css";
 import { useState } from "react";
 
-const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
+const SearchPage = ({ youtubeObj, getTheSearchedVid, searchResults }) => {
   const [clickedVideo, setClickedVideo] = useState("");
 
   const getTheVid = (e) => {
@@ -52,6 +52,7 @@ const SearchPage = ({ youtubeObj, getTheSearchedVid }) => {
             channelName={youtubeVid.snippet.channelTitle}
             videoId={youtubeVid.id.videoId}
             getTheVid={getTheVid}
+            searchResults={searchResults}
           />
         ))}
       </div>

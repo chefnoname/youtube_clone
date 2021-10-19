@@ -10,17 +10,12 @@
 }
 
 .vidIcons {
-  /* display: flex; */
   position: absolute;
   z-index: 10;
   flex-direction: column;
-  /* justify-content: flex-end; */
-  /* align-items: flex-end; */
   margin-top: 5px;
   height: 250px;
-  /* background-color: blue; */
   display: none;
-  /* right: 60vw; */
   width: 200px;
 }
 
@@ -40,10 +35,8 @@
   display: flex;
   justify-content: flex-end;
   overflow-x: hidden;
-  /* background-color: blueviolet; */
   width: 25px;
   margin-left: 175px;
-  /* height: 25px; */
 }
 
 .thumbnail:hover > .vidIcons {
@@ -55,7 +48,7 @@
   justify-content: flex-end;
 }
 
-.iconLabel {
+.cardSpacing .iconLabel {
   height: 25px;
   width: 100px;
   background-color: #000;
@@ -98,7 +91,8 @@
   object-fit: cover;
 }
 
-.videoDetails {
+.videoDetails,
+.searchVidDetails {
   display: flex;
 }
 
@@ -106,6 +100,7 @@
   border-radius: 50%;
   margin-right: 10px;
   margin-top: 10px;
+  /* margin-bottom: 10px; */
   height: 30px;
   width: 30px;
 }
@@ -146,40 +141,42 @@
   bottom: 220px;
 }
 
-/* .searchPageCard:hover {
-  cursor: pointer;
-} */
-
 .searchTiles .thumbnail img {
   margin-right: 50px;
   width: 380px;
   height: 202px;
 }
 
-/* .searchPageChannelPic img {
-  border-radius: 50%;
-  margin-right: 10px;
-  height: 20px;
-  margin-top: 10px;
-} */
+.searchTiles .thumbnail img:hover {
+  cursor: pointer;
+}
 
 .searchTiles .vidIcons {
   margin-left: 390px;
-  /* margin-top: 30px; */
-}
-
-.searchPageUploadDetails {
-  display: flex;
-  /* background-color: blueviolet; */
-}
-
-.searchPageChannelInfo {
-  margin-top: 40px;
 }
 
 .searchTiles .clockwork:hover > .iconLabel {
-  /* background: yellow; */
-  animation: searchSlideRight 0.5s 0.4s forwards;
+  animation: searchSlideRight 0.5s 0.4s forwards ease-out;
+}
+
+.searchTiles .iconLabel {
+  height: 25px;
+  width: 100px;
+  background-color: #000;
+  padding-left: 5px;
+  border-right: 1px solid #212121;
+  visibility: hidden;
+  position: absolute;
+  z-index: -10;
+  /* right: 20px; */
+}
+
+.searchTiles .clockwork {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  width: 25px;
+  margin-right: 5px;
 }
 
 .searchTiles .timeStamp {
@@ -191,16 +188,27 @@
   background-color: #000;
 }
 
+.searchTiles .searchVidDetails {
+  flex-direction: column;
+  width: 400px;
+  height: 120px;
+  right: 30px;
+  position: relative;
+  z-index: 5;
+}
+
+.searchTiles .channelInfo {
+  display: flex;
+}
+
 @keyframes searchSlideRight {
   from {
-    position: absolute;
-    left: -80px;
+    right: 160px;
     display: none;
   }
 
   to {
-    position: absolute;
-    left: -100px;
+    right: 195px;
     visibility: visible;
   }
 }

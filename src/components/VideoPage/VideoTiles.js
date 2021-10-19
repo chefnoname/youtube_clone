@@ -43,7 +43,7 @@ const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
               varaiant="subtitle2"
               sx={{ fontSize: "80%", color: "#AAAAAA", mb: "15px" }}
             >
-              45K views ~ 7 years ago
+              45K views · 7 years ago
             </Typography>
           </div>
         </div>

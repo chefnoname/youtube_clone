@@ -6,8 +6,15 @@ import { useEffect, useState } from "react";
 import "./YouTubeCard.css";
 
 const YouTubeCard = (props) => {
-  const { image, vidName, channelName, getTheVid, scrollY, wordFromChipBar } =
-    props;
+  const {
+    image,
+    vidName,
+    channelName,
+    getTheVid,
+    scrollY,
+    wordFromChipBar,
+    searchResults,
+  } = props;
 
   const TIME_ARR = ["hours", "days", "months", "years"];
 
@@ -91,29 +98,67 @@ const YouTubeCard = (props) => {
         <img srcSet={image} alt="" />
       </div>
 
-      <div className="videoDetails">
-        <div className="channelPic">
-          <img srcSet={image} alt="" />
+      {!searchResults ? (
+        <div className="videoDetails">
+          <div className="channelPic">
+            <img srcSet={image} alt="" />
+          </div>
+          <div className="channelInfo">
+            <Typography
+              variant="subtitle2"
+              sx={{ mt: "10px", width: "200px", fontWeight: "light" }}
+            >
+              {vidName.split(" ").length > 8
+                ? vidName.split(" ").slice(0, 8).join(" ") + "..."
+                : vidName}
+            </Typography>
+
+            <Typography
+              variant="subtitle2"
+              sx={{ mt: "10px", color: "#848584" }}
+            >
+              {channelName}
+            </Typography>
+
+            <Typography variant="subtitle2" sx={{ color: "#848584" }}>
+              {`${uploadTime} ${timeFrame} ago ·  ${views}K views`}
+            </Typography>
+          </div>
         </div>
-        <div className="channelInfo">
+      ) : (
+        <div className="searchVidDetails">
           <Typography
-            variant="subtitle2"
-            sx={{ mt: "10px", width: "200px", fontWeight: "bolder" }}
+            variant="h6"
+            sx={{
+              mt: "10px",
+              width: "400px",
+              fontWeight: "100",
+              fontSize: "16px",
+            }}
           >
             {vidName.split(" ").length > 8
               ? vidName.split(" ").slice(0, 8).join(" ") + "..."
               : vidName}
           </Typography>
-
-          <Typography variant="subtitle2" sx={{ mt: "10px", color: "#848584" }}>
-            {channelName}
-          </Typography>
-
           <Typography variant="subtitle2" sx={{ color: "#848584" }}>
-            {`${uploadTime} ${timeFrame} ago ~  ${views}K views`}
+            {`${views}K views ·  ${uploadTime} ${timeFrame} ago`}
+          </Typography>
+          <div className="channelInfo">
+            <div className="channelPic">
+              <img srcSet={image} alt="" />
+            </div>
+            <Typography
+              variant="subtitle2"
+              sx={{ mt: "13px", color: "#848584" }}
+            >
+              {channelName}
+            </Typography>
+          </div>
+          <Typography variant="subtitle2" sx={{ color: "#848584" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
           </Typography>
         </div>
-      </div>
+      )}
     </div>
   );
 };
