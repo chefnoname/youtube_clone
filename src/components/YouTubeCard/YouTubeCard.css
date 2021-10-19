@@ -120,12 +120,15 @@
 }
 
 .timeStamp {
-  position: absolute;
-  top: 120px;
-  left: 210px;
   height: 20px;
   width: 40px;
   background-color: #000;
+}
+
+.cardSpacing .timeStamp {
+  position: absolute;
+  top: 120px;
+  left: 210px;
 }
 
 /* SEARCH PAGE STYLING */
@@ -134,12 +137,12 @@
   width: 90vw;
   margin-bottom: 30px;
   display: flex;
-  padding-left: 50px;
+  padding-left: 20px;
 }
 
 .searchTiles .dots {
   position: absolute;
-  left: 430px;
+  left: 450px;
   bottom: 220px;
 }
 
@@ -149,8 +152,8 @@
 
 .searchTiles .thumbnail img {
   margin-right: 50px;
-  width: 420px;
-  height: 250px;
+  width: 380px;
+  height: 202px;
 }
 
 /* .searchPageChannelPic img {
@@ -161,7 +164,7 @@
 } */
 
 .searchTiles .vidIcons {
-  margin-left: 380px;
+  margin-left: 390px;
   /* margin-top: 30px; */
 }
 
@@ -177,6 +180,15 @@
 .searchTiles .clockwork:hover > .iconLabel {
   /* background: yellow; */
   animation: searchSlideRight 0.5s 0.4s forwards;
+}
+
+.searchTiles .timeStamp {
+  top: 180px;
+  left: 370px;
+  position: relative;
+  height: 20px;
+  width: 40px;
+  background-color: #000;
 }
 
 @keyframes searchSlideRight {

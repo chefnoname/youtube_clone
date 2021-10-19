@@ -50,6 +50,7 @@ const YouTubeCard = (props) => {
             sx={{ fontWeight: "bolder", fontSize: "12px", ml: 0.5 }}
           >
             {`${timeStamp.minutes}:${timeStamp.seconds}`}
+            {console.log("rendered")}
           </Typography>
         </div>
         <div className="vidIcons">
@@ -88,7 +89,6 @@ const YouTubeCard = (props) => {
           </div>
         </div>
         <img srcSet={image} alt="" />
-        {/* {imgStyle} */}
       </div>
 
       <div className="videoDetails">
