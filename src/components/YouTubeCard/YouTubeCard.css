@@ -92,6 +92,7 @@
 .thumbnail img {
   width: 255.09px;
   height: 143.14px;
+  object-fit: cover;
 }
 
 .videoDetails {

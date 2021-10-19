@@ -75,6 +75,7 @@ const YouTubeCard = (props) => {
           </div>
         </div>
         <img srcSet={image} alt="" />
+        {/* {imgStyle} */}
       </div>
 
       <div className="videoDetails">

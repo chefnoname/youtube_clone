@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 import "./ChipBar.css";
 
-const ChipBar = ({ getWordFromChipBar }) => {
+const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
   const [randomWordArray, setRandomWordArray] = useState([]);
   const [wordFromChipTag, setWordFromChipTag] = useState("");
 
@@ -43,12 +43,8 @@ const ChipBar = ({ getWordFromChipBar }) => {
 
   const resetWordFromChipTags = () => {
     getWordFromChipBar("TopGear best moments");
-    setWordFromChipTag("");
+    setWordFromChipTag("TopGear best moments");
   };
-
-  // const getTheNewSearchTerm = () => {
-  //   getWordFromChipBar(wordFromChipTag)
-  // }
 
   return (
     <div className="mainBar">
@@ -66,7 +62,12 @@ const ChipBar = ({ getWordFromChipBar }) => {
           <Toolbar variant="dense">
             <Chip
               label="All"
-              className={wordFromChipTag !== "" ? "chip" : "active"}
+              className={
+                wordFromChipTag !== wordFromChipBar ||
+                wordFromChipTag === "TopGear best moments"
+                  ? "active"
+                  : "chip"
+              }
               onClick={resetWordFromChipTags}
             />
             {randomWordArray.map((word, i) => (
@@ -75,6 +76,7 @@ const ChipBar = ({ getWordFromChipBar }) => {
                 getSelectedWord={getSelectedWord}
                 key={i}
                 wordFromChipTag={wordFromChipTag}
+                wordFromChipBar={wordFromChipBar}
               />
             ))}
             <IconButton

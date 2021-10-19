@@ -14,7 +14,9 @@ const App = () => {
   const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
-  const [wordFromChipBar, setWordFromChipBar] = useState("");
+  const [wordFromChipBar, setWordFromChipBar] = useState(
+    "TopGear best moments"
+  );
   const [queryStr, setQueryStr] = useState("TopGear best moments");
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -52,16 +54,12 @@ const App = () => {
     }
   }, [searchResults, wordFromChipBar]);
 
-  // useEffect(() => {
-  //   // let scrollY = windows.scrollY;
-  //   console.log(windows.scrollY);
-  // }, [windows.scrollY]);
-
   // FUNCTION TO CHANGE THE QUERY STRING USING THE INPUT APPBAR
   const changeQueryString = (e) => {
     setSearchResults(e);
     setDeleteTheSearchResults(false);
     setHomePageClickedVid();
+    setWordFromChipBar("TopGear best moments");
   };
 
   // FUNCTION TO GET THE VIDEO OBJECT FROM A SEARCHED RESULT
@@ -101,19 +99,16 @@ const App = () => {
     setWordFromChipBar(newSearchWord);
   };
 
-  const getScrollPos = () => {
-    // setScrollPosition(document.scrollY);
-    console.log(window.scrollY);
-  };
-  console.log(scrollPosition);
-
   return (
-    <div onScroll={getScrollPos}>
+    <div>
       <PrimarySearchAppBar
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
       />
-      <ChipBar getWordFromChipBar={getWordFromChipBar} />
+      <ChipBar
+        getWordFromChipBar={getWordFromChipBar}
+        wordFromChipBar={wordFromChipBar}
+      />
       <div className="formatting">
         {!deleteTheSearchResults && <DummyIcons />}
 

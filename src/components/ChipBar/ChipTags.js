@@ -4,7 +4,12 @@ import { useState } from "react";
 
 import "./ChipTags.css";
 
-const ChipTags = ({ word, getSelectedWord, wordFromChipTag }) => {
+const ChipTags = ({
+  word,
+  getSelectedWord,
+  wordFromChipTag,
+  wordFromChipBar, // The word which is sent up to App.js to change the queryStr, it is sent backdown to chipTags to edit the className
+}) => {
   const handleClick = () => {
     getSelectedWord(word);
   };
@@ -18,7 +23,11 @@ const ChipTags = ({ word, getSelectedWord, wordFromChipTag }) => {
       <Chip
         label={capitalizeFirstLetter(word)}
         onClick={handleClick}
-        className={wordFromChipTag === word ? "active chip" : "chip"}
+        className={
+          wordFromChipTag === word && wordFromChipTag === wordFromChipBar
+            ? "active chip"
+            : "chip"
+        }
       />
     </Stack>
   );
