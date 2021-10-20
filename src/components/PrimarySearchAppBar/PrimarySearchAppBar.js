@@ -201,7 +201,9 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
               sx={{ color: "red", fontSize: "35px", mt: 3 }}
               onClick={clearQueryString}
             />
-            <p className="youtubeName">YouTube</p>
+            <p className="youtubeName" onClick={clearQueryString}>
+              YouTube
+            </p>
           </div>
           <Search>
             <SearchIconWrapper>

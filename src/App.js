@@ -182,7 +182,7 @@ const App = () => {
         changeQueryString={changeQueryString}
         clearVideoData={clearVideoData}
       />
-      {!searchResults && (
+      {!searchResults && !homePageClickedVid && !searchPageClickedVid && (
         <ChipBar
           getWordFromChipBar={getWordFromChipBar}
           wordFromChipBar={wordFromChipBar}
@@ -210,6 +210,7 @@ const App = () => {
               getTheSearchedVid={getTheSearchedVid}
               scrollY={scrollY}
               searchResults={searchResults}
+              deleteTheSearchResults={deleteTheSearchResults}
             />
           )}
 

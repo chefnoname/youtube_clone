@@ -20,8 +20,10 @@ const VideoPage = (props) => {
     clickedSideVid ? clickedSideVid.id.videoId : videoId
   }`;
 
+  const tenResults = youtubeObj.slice(6, 16);
+
   return (
-    <div className="container">
+    <div className="videoPageContainer">
       <div className="mainVideo">
         <VideoCard
           url={youtubeURL}
@@ -31,10 +33,13 @@ const VideoPage = (props) => {
         />
       </div>
       <div className="sideVideos">
-        <VideoTiles
-          youtubeObj={youtubeObj}
-          handleClickedSideVid={handleClickedSideVid}
-        />
+        {tenResults.map((vid, i) => (
+          <VideoTiles
+            key={i}
+            vid={vid}
+            handleClickedSideVid={handleClickedSideVid}
+          />
+        ))}
       </div>
     </div>
   );
