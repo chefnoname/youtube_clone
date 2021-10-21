@@ -12,6 +12,8 @@ const VideoPage = (props) => {
     ? homePageClickedVid
     : searchPageClickedVid;
 
+  // console.log(props);
+
   const handleClickedSideVid = (e) => {
     setClickedSideVid(e);
   };
@@ -20,26 +22,47 @@ const VideoPage = (props) => {
     clickedSideVid ? clickedSideVid.id.videoId : videoId
   }`;
 
-  const tenResults = youtubeObj.slice(6, 16);
+  const videoCardChannelName = clickedSideVid
+    ? clickedSideVid.snippet.channelTitle
+    : channelName;
+
+  const videoCardImage = clickedSideVid
+    ? clickedSideVid.snippet.thumbnails.high.url
+    : image;
+
+  const videoCardVidName = clickedSideVid
+    ? clickedSideVid.snippet.title
+    : vidName;
+
+  console.log(clickedSideVid, "videoPage compo");
+  // console.log(scrollY, "scrollY");
+
+  // const tenResults = youtubeObj.slice(6, 16);
 
   return (
     <div className="videoPageContainer">
       <div className="mainVideo">
         <VideoCard
           url={youtubeURL}
-          channelName={channelName}
-          image={image}
-          vidName={vidName}
+          channelName={videoCardChannelName}
+          image={videoCardImage}
+          vidName={videoCardVidName}
         />
       </div>
       <div className="sideVideos">
-        {tenResults.map((vid, i) => (
+        {/* {tenResults.map((vid, i) => (
           <VideoTiles
             key={i}
             vid={vid}
             handleClickedSideVid={handleClickedSideVid}
+            scrollY={scrollY}
           />
-        ))}
+        ))} */}
+        <VideoTiles
+          // key={i}
+          youtubeObj={youtubeObj}
+          handleClickedSideVid={handleClickedSideVid}
+        />
       </div>
     </div>
   );

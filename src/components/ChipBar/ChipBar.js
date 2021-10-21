@@ -42,8 +42,8 @@ const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
   };
 
   const resetWordFromChipTags = () => {
-    getWordFromChipBar("TopGear best moments");
-    setWordFromChipTag("TopGear best moments");
+    getWordFromChipBar("FAANG Companies");
+    setWordFromChipTag("FAANG Companies");
   };
 
   return (
@@ -64,7 +64,7 @@ const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
               label="All"
               className={
                 wordFromChipTag !== wordFromChipBar ||
-                wordFromChipTag === "TopGear best moments"
+                wordFromChipTag === "FAANG Companies"
                   ? "active"
                   : "chip"
               }

@@ -16,10 +16,8 @@ const App = () => {
   const [searchPageClickedVid, setSearchPageClickedVid] = useState("");
   const [homePageClickedVid, setHomePageClickedVid] = useState();
   const [deleteTheSearchResults, setDeleteTheSearchResults] = useState(false);
-  const [wordFromChipBar, setWordFromChipBar] = useState(
-    "TopGear best moments"
-  );
-  const [queryStr, setQueryStr] = useState("TopGear best moments");
+  const [wordFromChipBar, setWordFromChipBar] = useState("FAANG Companies");
+  const [queryStr, setQueryStr] = useState("FAANG Companies");
 
   const [lazyLoadYoutubeObj, setLazyLoadYoutubeObj] = useState([]);
   const [secondLazyLoadYoutubeObj, setSecondLazyLoadYoutubeObj] = useState([]);
@@ -136,7 +134,7 @@ const App = () => {
     setSearchResults(e);
     setDeleteTheSearchResults(false);
     setHomePageClickedVid();
-    setWordFromChipBar("TopGear best moments");
+    setWordFromChipBar("FAANG Companies");
   };
 
   // FUNCTION TO GET THE VIDEO OBJECT FROM A SEARCHED RESULT
@@ -216,7 +214,7 @@ const App = () => {
 
         {(homePageClickedVid || searchPageClickedVid) &&
           deleteTheSearchResults && (
-            <VideoPage props={videoDataFromClickedVid} />
+            <VideoPage props={videoDataFromClickedVid} scrollY={scrollY} />
           )}
       </div>
     </div>

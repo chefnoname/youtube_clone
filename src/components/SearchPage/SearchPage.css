@@ -1,11 +1,13 @@
 .searchPageBox {
   display: flex;
   flex-direction: column;
+  width: 90vw;
+  overflow-x: hidden;
 }
 
 .searchTiles {
   display: block;
-  padding: 100px;
+  padding: 80px;
 }
 
 .divider {

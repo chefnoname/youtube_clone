@@ -1,9 +1,12 @@
 import Typography from "@mui/material/Typography";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
+import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import { useState, useEffect } from "react";
 
 import "./VideoTiles.css";
 
-const VideoTiles = ({ vid, handleClickedSideVid }) => {
+const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
   const [clickedSideVid, setClickedSideVid] = useState();
 
   const TIME_ARR = ["hours", "days", "months", "years"];
@@ -19,6 +22,8 @@ const VideoTiles = ({ vid, handleClickedSideVid }) => {
   const getRandomArbitrary = (min, max) => {
     return Math.ceil(Math.random() * (max - min) + min);
   };
+
+  const tenResults = youtubeObj.slice(6, 16);
 
   const [timeStamp, setTimeStamp] = useState({
     minutes: getRandomArbitrary(59, 10),
@@ -40,37 +45,63 @@ const VideoTiles = ({ vid, handleClickedSideVid }) => {
 
   handleClickedVid();
 
+  console.log(clickedSideVid);
+
   return (
     <div>
-      <div className="sideContainer">
+      {tenResults.map((vid, i) => (
         <div
-          className="sideImage"
+          className="sideContainer"
+          key={i}
           onClick={() => {
             setClickedSideVid(vid);
+
+            // console.log("clicked vid", vid);
           }}
         >
-          <img src={vid.snippet.thumbnails.medium.url} alt="" />
+          <div className="sideImage">
+            <img src={vid.snippet.thumbnails.medium.url} alt="" />
+          </div>
+
+          <div className="videoInfo">
+            <Typography variant="subtitle2" sx={{ fontWeight: "bolder" }}>
+              {vid.snippet.title.split(" ").length > 7
+                ? vid.snippet.title.split(" ").slice(0, 7).join(" ") + "..."
+                : vid.snippet.title}
+            </Typography>
+            <Typography
+              varaiant="subtitle2"
+              sx={{ fontSize: "80%", color: "#AAAAAA", mt: "5px" }}
+            >
+              {vid.snippet.channelTitle}
+            </Typography>
+            <Typography
+              varaiant="subtitle2"
+              sx={{ fontSize: "80%", color: "#AAAAAA", mb: "15px" }}
+            >
+              {`${views}K views ·  ${uploadTime} ${timeFrame} ago`}
+            </Typography>
+
+            <div className="vidIcons">
+              <div className="clockwork">
+                <div className="icon">
+                  <WatchLaterOutlinedIcon />
+                </div>
+              </div>
+
+              <div className="clockwork">
+                <div className="icon">
+                  <PlaylistPlayOutlinedIcon />
+                </div>
+              </div>
+
+              <div className="dots">
+                <MoreVertOutlinedIcon sx={{ mt: 11, ml: 23 }} />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="videoInfo">
-          <Typography variant="subtitle2" sx={{ fontWeight: "bolder" }}>
-            {vid.snippet.title.split(" ").length > 12
-              ? vid.snippet.title.split(" ").slice(0, 11).join(" ") + "..."
-              : vid.snippet.title}
-          </Typography>
-          <Typography
-            varaiant="subtitle2"
-            sx={{ fontSize: "80%", color: "#AAAAAA", mt: "5px" }}
-          >
-            {vid.snippet.channelTitle}
-          </Typography>
-          <Typography
-            varaiant="subtitle2"
-            sx={{ fontSize: "80%", color: "#AAAAAA", mb: "15px" }}
-          >
-            {`${views}K views ·  ${uploadTime} ${timeFrame} ago`}
-          </Typography>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
