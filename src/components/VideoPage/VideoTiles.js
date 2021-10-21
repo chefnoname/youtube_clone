@@ -55,8 +55,7 @@ const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
           key={i}
           onClick={() => {
             setClickedSideVid(vid);
-
-            // console.log("clicked vid", vid);
+            window.scrollTo(0, 0);
           }}
         >
           <div className="sideImage">
@@ -64,7 +63,11 @@ const VideoTiles = ({ youtubeObj, handleClickedSideVid }) => {
           </div>
 
           <div className="videoInfo">
-            <Typography variant="subtitle2" sx={{ fontWeight: "bolder" }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ fontWeight: "bolder" }}
+              className="vidTitle"
+            >
               {vid.snippet.title.split(" ").length > 7
                 ? vid.snippet.title.split(" ").slice(0, 7).join(" ") + "..."
                 : vid.snippet.title}

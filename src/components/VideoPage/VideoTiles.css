@@ -72,3 +72,19 @@
   cursor: pointer;
   display: block;
 }
+
+@media only screen and (max-width: 800px) {
+  .sideContainer {
+    width: 100vw;
+    margin-left: -30px;
+  }
+
+  .videoInfo {
+    width: 500px;
+    /* background-color: limegreen; */
+  }
+
+  .vidTitle {
+    width: 500px;
+  }
+}

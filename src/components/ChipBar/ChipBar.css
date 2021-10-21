@@ -26,19 +26,12 @@
   margin-right: 20px !important;
 }
 
-/* .rightArrow {
-  position: absolute;
-  background-color: #212121ee;
-  height: 50px;
-  right: 75px;
-} */
+@media only screen and (max-width: 800px) {
+  .mainBar {
+    left: 0px;
+  }
 
-/* sx={{
-  color: "black",
-  backgroundColor: "white",
-  border: "1px solid #5f5f5f",
-  mr: 3,
-  "&:hover": {
-    cursor: "pointer",
-  },
-}} */
+  .chevronRight {
+    right: 0px !important;
+  }
+}

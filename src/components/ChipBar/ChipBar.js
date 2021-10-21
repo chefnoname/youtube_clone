@@ -5,6 +5,7 @@ import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChipTags from "./ChipTags";
+import { useMediaQuery } from "react-responsive";
 
 import { useState, useEffect } from "react";
 
@@ -13,6 +14,8 @@ import "./ChipBar.css";
 const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
   const [randomWordArray, setRandomWordArray] = useState([]);
   const [wordFromChipTag, setWordFromChipTag] = useState("");
+
+  const isSmallerScreen = useMediaQuery({ query: "(max-width: 800px)" });
 
   useEffect(() => {
     const getRandomWords = async () => {
@@ -42,6 +45,7 @@ const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
   };
 
   const resetWordFromChipTags = () => {
+    window.scrollTo(0, 0);
     getWordFromChipBar("FAANG Companies");
     setWordFromChipTag("FAANG Companies");
   };
@@ -94,6 +98,7 @@ const ChipBar = ({ getWordFromChipBar, wordFromChipBar }) => {
                 width: 70,
                 borderRadius: 0,
               }}
+              className="chevronRight"
             >
               <ChevronRightIcon />
             </IconButton>

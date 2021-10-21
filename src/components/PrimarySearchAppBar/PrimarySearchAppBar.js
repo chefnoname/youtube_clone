@@ -205,7 +205,7 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
               YouTube
             </p>
           </div>
-          <Search>
+          <Search className="searchBar">
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -216,6 +216,7 @@ const PrimarySearchAppBar = ({ changeQueryString, clearVideoData }) => {
               autoFocus
               fullWidth={true}
               onKeyDown={handleChange}
+              className="searchBarInput"
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

@@ -34,11 +34,6 @@ const VideoPage = (props) => {
     ? clickedSideVid.snippet.title
     : vidName;
 
-  console.log(clickedSideVid, "videoPage compo");
-  // console.log(scrollY, "scrollY");
-
-  // const tenResults = youtubeObj.slice(6, 16);
-
   return (
     <div className="videoPageContainer">
       <div className="mainVideo">
@@ -50,16 +45,7 @@ const VideoPage = (props) => {
         />
       </div>
       <div className="sideVideos">
-        {/* {tenResults.map((vid, i) => (
-          <VideoTiles
-            key={i}
-            vid={vid}
-            handleClickedSideVid={handleClickedSideVid}
-            scrollY={scrollY}
-          />
-        ))} */}
         <VideoTiles
-          // key={i}
           youtubeObj={youtubeObj}
           handleClickedSideVid={handleClickedSideVid}
         />

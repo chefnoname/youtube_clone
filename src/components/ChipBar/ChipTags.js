@@ -11,6 +11,7 @@ const ChipTags = ({
   wordFromChipBar, // The word which is sent up to App.js to change the queryStr, it is sent backdown to chipTags to edit the className
 }) => {
   const handleClick = () => {
+    window.scrollTo(0, 0);
     getSelectedWord(word);
   };
 

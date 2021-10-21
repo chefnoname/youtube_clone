@@ -126,6 +126,64 @@
   left: 210px;
 }
 
+@media only screen and (max-width: 1000px) {
+  .cardSpacing .youtubeCard {
+    width: 300px;
+    /* margin-right: 5px; */
+  }
+
+  .thumbnail img {
+    width: 355.09px;
+    height: 163.14px;
+    object-fit: cover;
+  }
+
+  .cardSpacing .timeStamp {
+    position: absolute;
+    top: 130px;
+    left: 240px;
+  }
+
+  .cardSpacing .vidIcons {
+    overflow-x: hidden;
+    margin-left: 90px;
+  }
+
+  .dots {
+    justify-content: flex-end;
+    position: relative;
+    top: 25px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 730px) {
+  .cardSpacing .youtubeCard {
+    width: 250px;
+  }
+
+  .thumbnail img {
+    width: 250px;
+    height: 133.14px;
+    object-fit: cover;
+  }
+
+  .cardSpacing .timeStamp {
+    top: 110px;
+    left: 200px;
+  }
+
+  .cardSpacing .vidIcons {
+    overflow-x: hidden;
+    margin-left: 40px;
+  }
+
+  .dots {
+    justify-content: flex-end;
+    position: relative;
+    top: -10px;
+  }
+}
+
 /* SEARCH PAGE STYLING */
 
 .searchTiles .youtubeCard {
@@ -210,5 +268,35 @@
   to {
     right: 195px;
     visibility: visible;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .thumbnail img {
+    width: 355.09px;
+    height: 163.14px;
+    object-fit: cover;
+  }
+
+  .searchTiles .searchVidTitle {
+    width: 250px;
+  }
+
+  .searchTiles .vidIcons {
+    overflow-x: hidden;
+    margin-left: 380px;
+    width: 300px;
+  }
+
+  @keyframes searchSlideRight {
+    from {
+      right: 160px;
+      display: none;
+    }
+
+    to {
+      right: 295px;
+      visibility: visible;
+    }
   }
 }

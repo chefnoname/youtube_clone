@@ -4,6 +4,7 @@ import SearchPage from "./components/SearchPage/SearchPage";
 import VideoPage from "./components/VideoPage/VideoPage";
 import DummyIcons from "./components/DummyIcons/DummyIcons";
 import useScrollPosition from "@react-hook/window-scroll";
+import { useMediaQuery } from "react-responsive";
 
 import { useState, useEffect } from "react";
 
@@ -22,6 +23,8 @@ const App = () => {
   const [lazyLoadYoutubeObj, setLazyLoadYoutubeObj] = useState([]);
   const [secondLazyLoadYoutubeObj, setSecondLazyLoadYoutubeObj] = useState([]);
   const [thirdLazyLoadYoutubeObj, setThirdLazyLoadYoutubeObj] = useState([]);
+
+  const isSmallerScreen = useMediaQuery({ query: "(max-width: 800px)" });
 
   const endlessScrollSearchRequests = [
     "cat videos",
@@ -187,7 +190,7 @@ const App = () => {
         />
       )}
       <div className="formatting">
-        {!deleteTheSearchResults && <DummyIcons />}
+        {!deleteTheSearchResults && !isSmallerScreen && <DummyIcons />}
 
         {!searchResults && !homePageClickedVid && !searchPageClickedVid && (
           <YouTubeVids
@@ -198,6 +201,7 @@ const App = () => {
             lazyLoadYoutubeObj={lazyLoadYoutubeObj}
             secondLazyLoadYoutubeObj={secondLazyLoadYoutubeObj}
             thirdLazyLoadYoutubeObj={thirdLazyLoadYoutubeObj}
+            isSmallerScreen={isSmallerScreen}
           />
         )}
 

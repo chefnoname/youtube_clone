@@ -2,6 +2,8 @@ import Typography from "@mui/material/Typography";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
+import { useMediaQuery } from "react-responsive";
+
 import { useEffect, useState } from "react";
 import "./YouTubeCard.css";
 
@@ -15,6 +17,8 @@ const YouTubeCard = (props) => {
     wordFromChipBar,
     searchResults,
   } = props;
+
+  const isSmallerScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
   const TIME_ARR = ["hours", "days", "months", "years"];
 
@@ -46,6 +50,7 @@ const YouTubeCard = (props) => {
 
   const getClickedVid = () => {
     getTheVid(props);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -135,6 +140,7 @@ const YouTubeCard = (props) => {
               fontWeight: "100",
               fontSize: "16px",
             }}
+            className="searchVidTitle"
           >
             {vidName.split(" ").length > 8
               ? vidName.split(" ").slice(0, 8).join(" ") + "..."
